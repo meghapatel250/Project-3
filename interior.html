@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Elevation</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- FONT AWESOME  -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <style>
+    
+    /* --------------------------------------- TABS ----------------------------------------------------*/
+    @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css');
+
+*,
+*:after,
+*:before {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.clearfix:before,
+.clearfix:after {
+	content: " ";
+	display: table;
+}
+
+.clearfix:after {
+	clear: both;
+}
+
+body {
+
+}
+
+a {
+  color: #ccc;
+  text-decoration: none;
+  outline: none;
+}
+
+/*Fun begins*/
+#interior-tabs-div .tab_container {
+	width: 90%;
+	margin: 0 auto;
+	padding-top: 20px;
+	position: relative;
+}
+
+#interior-tabs-div input, section {
+  clear: both;
+  padding-top: 10px;
+  display: none;
+}
+
+#interior-tabs-div label {
+  font-weight: 700;
+  font-size: 18px;
+  display: block;
+  width: 100%;
+  padding: 0.9em;
+  color: #757575;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  background: #f0f0f0;
+}
+
+#interior-tabs-div #tab1:checked ~ #content1,
+#interior-tabs-div #tab2:checked ~ #content2{
+  display: block;
+  padding: 20px;
+}
+
+#interior-tabs-div .tab-content .gallery-div .first-line,
+#interior-tabs-div .tab-content .gallery-div .second-line,
+#interior-tabs-div .tab-content .content-div p{
+  -webkit-animation: fadeInScale 0.7s ease-in-out;
+  -moz-animation: fadeInScale 0.7s ease-in-out;
+  animation: fadeInScale 0.7s ease-in-out;
+}
+
+#interior-tabs-div [id^="tab"]:checked + label {
+  background: #fff;
+}
+
+#interior-tabs-div .tab-content{
+    border: 1px solid #7db391;
+    border-radius: 20px;
+    background-color: #eee7e7;
+}
+
+/*Media query*/
+@media only screen and (max-width: 900px) {
+  .tab_container {
+    width: 98%;
+  }
+}
+
+/*Content Animation*/
+@keyframes fadeInScale {
+  0% {
+  	transform: scale(0.9);
+  	opacity: 0;
+  }
+  
+  100% {
+  	transform: scale(1);
+  	opacity: 1;
+  }
+}
+/* gallery */
+ 
+    /* --------------------------------------- GOOGLE MAP ----------------------------------------------------*/
+    #google-map-div .container {
+      width: 100%;
+    }
+
+    /* Then style the iframe to fit in the container div with full height and width */
+    #google-map-div .responsive-iframe {
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="interior-tabs-div" style="margin-bottom: 20px;">
+    <div class="tab_container">
+        <input id="tab1" type="radio" name="tabs" checked>
+        <label for="tab1"><span>Interior</span></label>
+
+        <section id="content1" class="tab-content">
+          <div class="content-div">
+            <p>
+                Transform the interior of your home by consulting the interior decorator Indore. As our modern interior designer understands the prerequisites of current interior décor trends. Additionally, by taking into consideration the personalized interest of each client, our room interior designer strives to achieve client satisfaction and aims for perfection and excellence. <p></p>
+                <p>Connect with the interior designers Indore and renovate your home by seeking expert guidance from the best interior designer Indore. Because our team of designers possesses years of experience and expertise. Moreover, our home interior designer has got recognition and appreciation for extraordinary home décor. </p><p></p>
+                <p>Howsoever, our profoundly talented interior designers intelligently design your home by considering the different sets of themes, colors, patterns, space, and texture. Hence, by closely monitoring the best match for your home, they guide you with the appropriate choice of furnishing and flooring. Thus, by designing the picture-perfect home in a range of interior design trends and styles. Our interior decorator focuses upon durability and aesthetics by suggesting popular and famous interior design ideas. </p><p></p>
+                <p>Thereby, without much ado associate with an interior designer near me and have the stunningly awesome interior design done. Thus, whether you are looking for a bedroom interior designer or living room interior designer you can check out our range of house interior designers for the modern interior design of your home.</p>
+            </p>
+          </div>
+            <div class="gallery-div">
+                <div class="row first-line">
+                 <div class="col-md-3 col-6 mt-sm-0 mt-4">
+                     <div class="image-div">
+                         <img class="img-fluid" src="https://img.freepik.com/free-photo/3d-rendering-loft-luxury-living-room-with-shelf-near-dining-table_105762-2053.jpg?size=626&ext=jpg&ga=GA1.2.2031644658.1674562410&semt=sph" alt="">
+                     </div>
+                 </div>
+                 <div class="col-md-3 col-6 mt-sm-0 mt-4">
+                     <div class="image-div">
+                         <img class="img-fluid" src="https://img.freepik.com/free-photo/3d-rendering-loft-luxury-living-room-with-shelf-near-dining-table_105762-2053.jpg?size=626&ext=jpg&ga=GA1.2.2031644658.1674562410&semt=sph" alt="">
+                     </div>
+                 </div>
+                 <div class="col-md-3 col-6 mt-sm-0 mt-4">
+                     <div class="image-div">
+                         <img class="img-fluid" src="https://img.freepik.com/free-photo/3d-rendering-loft-luxury-living-room-with-shelf-near-dining-table_105762-2053.jpg?size=626&ext=jpg&ga=GA1.2.2031644658.1674562410&semt=sph" alt="">
+                     </div>
+                 </div>
+                 <div class="col-md-3 col-6 mt-sm-0 mt-4">
+                     <div class="image-div">
+                         <img class="img-fluid" src="https://img.freepik.com/free-photo/3d-rendering-loft-luxury-living-room-with-shelf-near-dining-table_105762-2053.jpg?size=626&ext=jpg&ga=GA1.2.2031644658.1674562410&semt=sph" alt="">
+                     </div>
+                 </div>
+                </div>
+ 
+                <div class="row mt-4 second-line">
+                 <div class="col-md-3 col-6 mt-sm-0 mt-4">
+                     <div class="image-div">
+                         <img class="img-fluid" src="https://img.freepik.com/free-photo/3d-rendering-loft-luxury-living-room-with-shelf-near-dining-table_105762-2053.jpg?size=626&ext=jpg&ga=GA1.2.2031644658.1674562410&semt=sph" alt="">
+                     </div>
+                 </div>
+                 <div class="col-md-3 col-6 mt-sm-0 mt-4">
+                     <div class="image-div">
+                         <img class="img-fluid" src="https://img.freepik.com/free-photo/3d-rendering-loft-luxury-living-room-with-shelf-near-dining-table_105762-2053.jpg?size=626&ext=jpg&ga=GA1.2.2031644658.1674562410&semt=sph" alt="">
+                     </div>
+                 </div>
+                 <div class="col-md-3 col-6 mt-sm-0 mt-4">
+                     <div class="image-div">
+                         <img class="img-fluid" src="https://img.freepik.com/free-photo/3d-rendering-loft-luxury-living-room-with-shelf-near-dining-table_105762-2053.jpg?size=626&ext=jpg&ga=GA1.2.2031644658.1674562410&semt=sph" alt="">
+                     </div>
+                 </div>
+                 <div class="col-md-3 col-6 mt-sm-0 mt-4">
+                     <div class="image-div">
+                         <img class="img-fluid" src="https://img.freepik.com/free-photo/3d-rendering-loft-luxury-living-room-with-shelf-near-dining-table_105762-2053.jpg?size=626&ext=jpg&ga=GA1.2.2031644658.1674562410&semt=sph" alt="">
+                     </div>
+                 </div>
+                </div>
+ 
+             </div>
+        </section>
+    </div>
+  </div>
+
+
+  <!------------------------------------- SERVICES ------------------------------------ -->
+   
+
+  <!------------------------------------- GOOGLE MAP ------------------------------------ -->
+  <div id="google-map-div">
+    <div class="row">
+      <div class="col-12">
+        <iframe class="responsive-iframe"
+          src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14721.047787136391!2d75.886509!3d22.7185032!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3962fd4ed470cfd1%3A0xa7d029a868755b6f!2sFreelancer%20IT%20Services%20l%20Website%20Deisgner%20in%20Indore!5e0!3m2!1sen!2sin!4v1685620019274!5m2!1sen!2sin"
+          width="1400" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+ <script>
+
+ </script>
+</body>
+
+</html>

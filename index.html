@@ -1,0 +1,3605 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {}
+
+        /* navbar */
+
+        .navbar {
+            background: #004658;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 60px;
+            -webkit-box-shadow: 0 20px 50px 0 rgb(0 0 0 / 5%);
+            box-shadow: 0 20px 50px 0 rgb(0 0 0 / 5%);
+        }
+
+        .sticky {
+            position: -webkit-sticky;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+        }
+
+        .navbar .logo {
+            text-decoration: none;
+            color: white;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 20px;
+        }
+
+        .navbar .logo .logo-div img{
+            height: 60px;
+            margin-top: -20px;
+            width: 100%;
+        }
+
+        @media (max-width:1000px){
+            .navbar .logo .logo-div img{
+            
+            margin-top: -5px;
+            
+        }
+        }
+
+        /* nav menu button */
+
+        .menu-btn {
+            position: relative;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            width: 1.5rem;
+            height: 1.5rem;
+            cursor: pointer;
+            z-index: 2;
+        }
+
+        .navbar .menu-btn__lines::before,
+        .navbar .menu-btn__lines::after {
+            content: "";
+            position: absolute;
+        }
+
+        .navbar .menu-btn__lines,
+        .navbar .menu-btn__lines::before,
+        .navbar .menu-btn__lines::after {
+            width: 1.5rem;
+            height: 0.1rem;
+            background: white;
+            transition: all 0.4s ease-in-out;
+        }
+
+        .navbar .menu-btn__lines::before {
+            transform: translateY(-0.5rem);
+        }
+
+        .navbar .menu-btn__lines::after {
+            transform: translateY(0.5rem);
+        }
+
+
+        .navbar .menu-items {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar ul li {
+            list-style: none;
+            transition: 0.3s ease;
+        }
+
+        .navbar ul li .arrow {
+            transition: all 0.3s ease-out;
+        }
+
+        .navbar ul li a {
+            text-decoration: none;
+            color: rgb(241, 28, 28);
+        }
+
+        /* dropdown menu */
+
+        .navbar .dropdown {
+            position: relative;
+        }
+
+        .expand-btn:after {
+            content: " \25BE";
+            opacity: 0.4;
+            margin-left: 5px;
+        }
+
+        .navbar .dropdown-menu,
+        .menu-right {
+            position: absolute;
+            background: #e9ecef;
+            width: 190px;
+            line-height: 30px;
+            border-radius: 0 0 5px 5px;
+            top: 65px;
+            border-top: 1px solid white;
+            left: 0;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+            -webkit-box-shadow: 0 20px 50px 0 rgb(0 0 0 / 5%);
+            box-shadow: 0 20px 50px 0 rgb(0 0 0 / 5%);
+        }
+
+        .navbar .menu-right {
+            top: 0;
+            left: 100%;
+        }
+
+        .navbar .dropdown-menu,
+        .menu-left {
+            left: unset;
+            right: 0;
+        }
+
+        .navbar .menu-left {
+            left: -100%;
+        }
+
+        .navbar .menu-item {
+            display: flex;
+            color: white;
+            justify-content: space-between;
+            width: 100%;
+            padding: 0.5rem 1.5rem;
+            font-size: 14px;
+        }
+
+        @media (max-width:1019px) {
+            .navbar .menu-item {
+                color: black;
+            }
+        }
+
+        .navbar .menu-item:hover {
+            color: #ff5722;
+        }
+
+        .menu-item.first-item {
+            font-weight: 700;
+            padding: 1.5rem 1rem;
+        }
+
+        .navbar .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .navbar .dropdown-right:hover .menu-right {
+            left: 100%;
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .navbar .dropdown-right:hover .menu-left {
+            left: -100%;
+        }
+
+        /* mega menu  */
+
+        .navbar .mega-menu {
+            position: absolute;
+            left: 50%;
+            width: 45vw;
+            top: 65px;
+            border-top: 1px solid #ffffff;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease-out 0s, visibility 0.1s linear 0s;
+        }
+
+        .mega-menu .content {
+            background: #e9ecef;
+            padding: 1rem;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            width: 100%;
+            justify-content: space-between;
+            -webkit-box-shadow: 0 20px 50px 0 rgb(0 0 0 / 5%);
+            box-shadow: 0 20px 50px 0 rgb(0 0 0 / 5%);
+        }
+
+        .content .col {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            line-height: 2.5rem;
+        }
+
+        .content .col .img-wrapper {
+            display: block;
+            position: relative;
+            width: 100%;
+            height: 20vw;
+            overflow: hidden;
+        }
+
+        .content .col .img {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+
+        .content .col img {
+            width: 100%;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .content .col .img-wrapper:hover img {
+            transform: scale(1.1);
+        }
+
+        .content .col .menu-title {
+            color: #ff5722;
+            font-size: 1.2rem;
+            line-height: 3rem;
+            font-weight: bold;
+        }
+
+        .content .col p {
+            line-height: 1rem;
+            margin-top: 5px;
+            color: #112f48;
+        }
+
+        .content .col .mega-links {
+            border-left: 1px solid #3c3c3c;
+        }
+
+
+        .col .mega-links li,
+        .col .mega-links li a{
+            padding: 0 1rem;
+            color: black;
+        }
+
+        .menu-items li:hover .mega-menu {
+            opacity: 1;
+            visibility: visible;
+        }
+
+       
+
+        /* container */
+        header .container {
+            margin: 100px auto auto;
+            padding: 0 15px;
+            max-width: 1200px;
+            text-align: center;
+        }
+
+        header .container p {
+            color: #ffffff;
+        }
+
+        header h1 {
+            font-weight: 700;
+            line-height: 10vw;
+            color: #ffffff;
+            text-transform: uppercase;
+        }
+
+        /* animation menu hamburger */
+        .menu-btn.open .menu-btn__lines {
+            transform: translateX(1rem);
+            background: transparent;
+        }
+
+        .menu-btn.open .menu-btn__lines::before {
+            transform: rotate(45deg) translate(-0.5rem, 0.5rem);
+            background: #132f48;
+        }
+
+        .menu-btn.open .menu-btn__lines::after {
+            transform: rotate(-45deg) translate(-0.5rem, -0.5rem);
+            background: #132f48;
+        }
+
+        /* Responsive style */
+
+        @media screen and (max-width: 1024px) {
+            .navbar {
+                padding: 10px 20px;
+            }
+
+            .overflow {
+                overflow: hidden;
+            }
+
+            .overlay {
+                position: fixed;
+                left: 0;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                z-index: 500;
+                background-color: rgba(0, 0, 0, 0.6);
+                opacity: 0;
+                visibility: hidden;
+                transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+            }
+
+            .overlay--active {
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .menu-btn {
+                display: flex;
+            }
+
+            .navbar .menu-items {
+                position: fixed;
+                height: 100%;
+                max-height: initial;
+                overflow-y: auto;
+                width: 80%;
+                top: 65px;
+                left: 0;
+                background: #fcfcfc;
+                display: block;
+                transform: translateX(-100vh);
+                transition: 0.3s ease-out;
+                padding-bottom: 100px;
+            }
+
+            .menu-items.open {
+                transform: translateY(0);
+            }
+
+            .menu-items li:first-child {
+                margin-top: 20px;
+            }
+
+            .menu-items li a {
+                padding: 10px 1rem;
+                display: block;
+                font-size: 18px;
+            }
+
+            .menu-items .dropdown-right .right-arrow {
+                transform: rotate(90deg);
+            }
+
+            .menu-item.first-item {
+                padding: 1rem 1rem;
+            }
+
+            /* DROPDOWN, MEGA MENUS */
+            .menu-items .dropdown-menu,
+            .menu-items .menu-right,
+            .menu-items .mega-menu {
+                position: static;
+                opacity: 1;
+                top: 4rem;
+                visibility: visible;
+                margin-left: -18px;
+                width: auto;
+                max-height: 0;
+                transform: scaleX(0);
+                transform-origin: left;
+                overflow: hidden;
+                transition: all 0.5s ease;
+            }
+
+            .menu-items .dropdown-menu,
+            .menu-items .menu-right {
+                padding-left: 1rem;
+                width: 102%;
+                margin-left: -10px;
+            }
+
+            .menu-items .mega-menu .col {
+                padding-left: 1rem;
+            }
+
+            .expand-btn.open+.sample {
+                max-height: 100%;
+                transform: scaleZ(1);
+            }
+
+            .expand-btn.open+.blog.sample {
+                max-height: 100%;
+                transform: scaleZ(1);
+                max-width: fit-content;
+            }
+
+            .navbar .sample {
+                border-top: none;
+            }
+
+            .sample li {
+                margin: 0;
+            }
+
+            .sample li:last-child {
+                border-bottom: none;
+            }
+
+            .sample li a {
+                font-size: 1rem;
+            }
+
+            .mega-menu .content {
+                grid-template-columns: auto;
+                padding: 1rem 1rem 0 1rem;
+            }
+
+            .mega-menu .content .col {
+                width: 100%;
+                padding-top: 1rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .col .mega-links li,
+            .col .mega-links li a {
+                padding: 0 0.5rem;
+            }
+
+            .content .col .mega-links {
+                border-left: 0;
+                padding-left: 0.5rem;
+            }
+
+            .col .mega-links li {
+                margin: 0;
+            }
+        }
+
+        /* ==================================== BANNER =================================================== */
+        .banner-carousel .row-banner {
+            background-image: url('https://wallpaperaccess.com/full/3060214.jpg');
+            background-size: cover;
+            background-position: center top;
+            height: 80vh;
+        }
+
+        /* ==================================== ABOUT US =================================================== */
+        .about-us.container {
+            margin: 100px auto 30px auto;
+            padding: 0 15px;
+            max-width: 1200px;
+            text-align: center;
+        }
+
+        .about-us .about-content-side .heading h1 {
+            color: black;
+        }
+
+        .about-us .about-content-side span {
+            color: #ff5722;
+            text-shadow: 2px 0 gray;
+        }
+
+        .about-us .about-content-side .content p.bold-text {
+            margin-top: 20px;
+            text-shadow: 1px 0 gray;
+        }
+
+        .about-us .about-content-side .content p {
+            color: black;
+            text-align: left;
+        }
+
+        .about-us .about-image-side {
+            margin-top: 40px;
+        }
+
+        .about-us .about-image-side .image-left-col .image-div,
+        .about-us .about-image-side .image-right-col .image-div {
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .about-us .about-image-side .image-left-col .image-div img,
+        .about-us .about-image-side .image-right-col .image-div img {
+            transition: 0.5s all ease-in-out;
+
+        }
+
+        .about-us .about-image-side .image-left-col .image-div:hover img,
+        .about-us .about-image-side .image-right-col .image-div:hover img {
+            transform: scale(1.3);
+        }
+
+        .about-us .about-image-side .image-right-col {
+            top: -100px;
+        }
+
+        .about-us .about-image-side .image-left-col {
+            top: -20px;
+        }
+
+        @media (max-width:767px) {
+
+            .about-us .about-image-side .image-right-col,
+            .about-us .about-image-side .image-left-col {
+                top: 0;
+            }
+        }
+
+        /* ==================================== QUICK CHECKOUT =================================================== */
+        .quick-checkout-div .container {
+            padding: 20px 10px;
+            max-width: 800px;
+            text-align: center;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        }
+
+        .quick-checkout-div .container .item img {
+            height: 50px;
+        }
+
+        .quick-checkout-div .container .col-4:not(:last-child) {
+            border-right: 1px solid wheat;
+        }
+
+        .quick-checkout-div .container {
+            color: black;
+        }
+
+        /* ==================================== FEATURES =================================================== */
+        .features-div {
+            margin-top: 40px;
+        }
+
+        .features-div section {
+            padding: 10px 0;
+        }
+
+        .features-div a,
+        .features-div a:hover,
+        .features-div a:focus,
+        .features-div a:active {
+            text-decoration: none;
+            outline: none;
+        }
+
+        .features-div a,
+        .features-div a:active,
+        .features-div a:focus {
+            color: #6f6f6f;
+            text-decoration: none;
+            transition-timing-function: ease-in-out;
+            -ms-transition-timing-function: ease-in-out;
+            -moz-transition-timing-function: ease-in-out;
+            -webkit-transition-timing-function: ease-in-out;
+            -o-transition-timing-function: ease-in-out;
+            transition-duration: .2s;
+            -ms-transition-duration: .2s;
+            -moz-transition-duration: .2s;
+            -webkit-transition-duration: .2s;
+            -o-transition-duration: .2s;
+        }
+
+        .features-div ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .features-div #features {
+            background: white;
+        }
+
+        .features-div #features .icon {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            border-radius: 4px;
+            text-align: center;
+            position: relative;
+            z-index: 1
+        }
+
+        .features-div #features .content-left span {
+            float: right
+        }
+
+        .features-div #features .content-left .text {
+            text-align: right
+        }
+
+        .features-div #features .content-right span {
+            float: left
+        }
+
+        .features-div #features .box-item {
+            box-shadow: 0 0 12px #f4f4f4;
+            padding: 15px;
+            line-height: 22px;
+            margin-top: 30px;
+            border-radius: 3px;
+            background-color: #fff;
+            -webkit-transition: all .3s ease-in-out;
+            -mox-transition: all .3s ease-in-out;
+            transition: all .3s ease-in-out;
+            position: relative;
+            top: 0
+        }
+
+        .features-div #features .box-item .icon {
+            text-align: center;
+            margin: 12px;
+            -webkit-transition: all .2s linear;
+            -moz-transition: all .2s linear;
+            -o-transition: all .2s linear;
+            transition: all .2s linear
+        }
+
+        .features-div #features .box-item .icon img {
+            color: #008de2;
+            height: 60px;
+            -webkit-transition: all .2s linear;
+            -moz-transition: all .2s linear;
+            -o-transition: all .2s linear;
+            transition: all .2s linear
+        }
+
+        .features-div #features .box-item .text h4 {
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: 500;
+            line-height: 22px;
+            -webkit-transition: all .2s linear;
+            -moz-transition: all .2s linear;
+            -o-transition: all .2s linear;
+            transition: all .2s linear
+        }
+
+        .features-div #features .box-item .text p {
+            font-size: 14px;
+            line-height: 26px;
+            color: black;
+        }
+
+        .features-div #features .box-item:hover {
+            box-shadow: 0 10px 22px 10px rgba(27, 38, 49, .1)
+        }
+
+        .features-div #features .box-item:hover h4 {
+            color: #008de2
+        }
+
+        .features-div #features .show-box {
+            margin-top: 5px;
+        }
+
+        .features-div #features .show-box img {
+            width: 100%
+        }
+
+        /* ==================================== SERVICES-2 =================================================== */
+        /* Created By : Mohammad Al Hefel */
+        :root {
+            --main-color: #f57d05;
+
+        }
+
+        .services-2-div {
+            padding: 0;
+            margin: 0;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        .services-2-div .container {
+            width: 100%;
+            padding: 0 8%;
+        }
+
+        .services-2-div .container h2 {
+            text-align: center;
+            padding-top: 6%;
+            margin-bottom: 60px;
+            font-size: 1.8rem;
+            font-weight: 600;
+            position: relative;
+        }
+
+        .services-2-div .container h2::after {
+            content: "";
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 3px;
+            background-color: var(--main-color);
+            border-radius: 10px;
+        }
+
+        .services-2-div .row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 30px;
+        }
+
+        .services-2-div .row .service {
+            padding: 25px 15px;
+            background: transparent;
+            font-size: 15px;
+            border-radius: 5px;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.5s;
+        }
+
+        .services-2-div .row .service:hover {
+            color: #fff;
+            background-color: var(--main-color);
+            transform: scale(1.05);
+        }
+
+        .services-2-div .row .service img {
+            margin-bottom: 20px;
+            width: 70px;
+            transition: 0.5s;
+        }
+
+        .services-2-div h3 {
+            font-size: 15px;
+        }
+
+        .services-2-div .row .service h2 {
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        /* ==================================== SPECIAL OFFER =================================================== */
+        .floor-plan-div a,
+        .floor-plan-div a:hover,
+        .floor-plan-div a:focus,
+        .floor-plan-div a:active {
+            text-decoration: none;
+            outline: none;
+        }
+
+        .floor-plan-div a,
+        .floor-plan-div a:active,
+        .floor-plan-div a:focus {
+            text-decoration: none;
+            transition-timing-function: ease-in-out;
+            -ms-transition-timing-function: ease-in-out;
+            -moz-transition-timing-function: ease-in-out;
+            -webkit-transition-timing-function: ease-in-out;
+            -o-transition-timing-function: ease-in-out;
+            transition-duration: .2s;
+            -ms-transition-duration: .2s;
+            -moz-transition-duration: .2s;
+            -webkit-transition-duration: .2s;
+            -o-transition-duration: .2s;
+        }
+
+        .floor-plan-div ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .floor-plan-div img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .floor-plan-div span,
+        .floor-plan-div a,
+        .floor-plan-div a:hover {
+            display: inline-block;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .floor-plan-div .news-section {
+            padding: 75px 0;
+        }
+
+        .floor-plan-div .news-item {
+            box-shadow: 0 0 15px #ededed;
+            -webkit-transition: .5s;
+            -o-transition: .5s;
+            transition: .5s;
+            margin-bottom: 40px;
+        }
+
+        .floor-plan-div .news-item:hover {
+            -webkit-transform: translateY(-10px);
+            -ms-transform: translateY(-10px);
+            transform: translateY(-10px);
+            -webkit-box-shadow: 0px 15px 15px 0px #edeaea;
+            box-shadow: 0px 15px 15px 0px #edeaea;
+        }
+
+        .floor-plan-div .newsimg img {
+            width: 100%;
+        }
+
+
+        .floor-plan-div .news-slide.owl-carousel .col-lg-4 {
+            max-width: 100%;
+            padding: 0;
+        }
+
+        .floor-plan-div .news-section .owl-theme .owl-nav [class*="owl-"] {
+            color: #333;
+            font-size: 14px;
+            margin: 5px;
+            padding: 4px 7px;
+            background: #fff;
+            display: inline-block;
+            cursor: pointer;
+            border-radius: 3px;
+            border: 1px solid #ddd;
+        }
+
+        .floor-plan-div .big-title {
+            text-align: left;
+        }
+
+        .floor-plan-div .big-title h2 {
+            font-size: 20px;
+            color: #f57d05;
+        }
+
+        .floor-plan-div a.view-more-btn-div {
+            float: right;
+            border-radius: 10px;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+        }
+
+        .floor-plan-div a.view-more-btn-div button {
+            padding: 5px 13px;
+            background-color: #f57d05;
+            border-radius: 10px;
+            border: 1px solid #f57d05;
+            color: white;
+        }
+
+        .floor-plan-div a.view-more-btn-div:hover button {
+            background-color: white;
+            color: #f57d05;
+        }
+
+        /* ==================================== TRENDING DESIGNS =================================================== */
+
+        .trending-designs-div .big-title {
+            text-align: left;
+        }
+
+        .trending-designs-div .big-title h2 {
+            font-size: 20px;
+            color: #f57d05;
+        }
+
+        .trending-designs-div a.view-more-btn-div {
+            border-radius: 10px;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+            float: right;
+        }
+
+        .trending-designs-div a.view-more-btn-div button {
+            padding: 5px 13px;
+            background-color: #f57d05;
+            border: 1px solid #f57d05;
+            border-radius: 10px;
+            color: white;
+        }
+
+        .trending-designs-div a.view-more-btn-div:hover button {
+            background-color: white;
+            color: #f57d05;
+        }
+
+        .trending-designs-div .product-grid4 {
+            position: relative;
+            font-family: Poppins, sans-serif;
+            text-align: center;
+            border-radius: 5px;
+            overflow: hidden;
+            z-index: 1;
+            transition: all 0.3s ease 0s;
+            box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+        }
+
+        .trending-designs-div .product-grid4 .product-image4 {
+            position: relative;
+        }
+
+        .product-grid4:hover {
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+        }
+
+        .trending-designs-div .product-grid4 .product-image4 a {
+            display: block;
+        }
+
+        .trending-designs-div .product-grid4 .product-image4 img {
+            width: 100%;
+            height: auto;
+        }
+
+        .trending-designs-div .product-grid4 .pic-1 {
+            opacity: 1;
+        }
+
+        .trending-designs-div .product-grid4 .view-details {
+            width: 180px;
+            padding: 0;
+            margin: 0 auto;
+            list-style: none;
+            position: absolute;
+            right: 0;
+            left: 0;
+            top: 90%;
+            transform: translateY(-50%);
+            transition: all 0.3s ease 0s;
+        }
+
+        .trending-designs-div .product-grid4 .view-details li {
+            display: inline-block;
+            opacity: 0;
+            transition: all 0.7s;
+        }
+
+        .trending-designs-div .product-grid4 .view-details li:nth-child(1) {
+            transition-delay: 0.1s;
+        }
+
+        .trending-designs-div .product-grid4:hover .view-details li {
+            opacity: 1;
+        }
+
+        .trending-designs-div .product-grid4 .view-details li a {
+            color: white;
+            background: #f57d05;
+            font-size: 13px;
+            line-height: 36px;
+            width: 140px;
+            height: 36px;
+            border-radius: 2px;
+            margin: 0 5px;
+            display: block;
+            transition: all 0.3s ease 0s;
+        }
+
+        .trending-designs-div .product-grid4 .view-details li a:hover {
+            color: black;
+            background: white;
+        }
+
+        .trending-designs-div .product-grid4 .view-details li a:hover:after,
+        .trending-designs-div .product-grid4 .view-details li a:hover:before {
+            opacity: 1;
+        }
+
+        .trending-designs-div .product-grid4 .product-discount-label {
+            color: #fff;
+            background-color: #16a085;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            line-height: 35px;
+            height: 35px;
+            width: 75px;
+            position: absolute;
+            border-radius: 50%;
+            right: 100px;
+            top: 6px;
+            transition: all 0.3s;
+        }
+
+        .trending-designs-div .product-grid4 .product-new-label {
+            color: #fff;
+            background-color: #167ce9;
+            font-size: 12px;
+            font-weight: 600;
+            height: 35px;
+            width: 90px;
+            position: absolute;
+            left: 0px;
+            top: 6px;
+            transition: all 0.3s;
+        }
+
+        .trending-designs-div .product-grid4 .product-discount-label {
+            left: auto;
+            right: 10px;
+            background-color: #d7292a;
+        }
+
+        .trending-designs-div .product-grid4:hover .product-new-label {
+            opacity: 0;
+        }
+
+        .trending-designs-div .product-grid4 .product-content {
+            padding: 25px 15px;
+        }
+
+        .trending-designs-div .product-grid4 .title {
+            font-size: 15px;
+            font-weight: 600;
+            text-transform: capitalize;
+            margin: 0 0 10px;
+            text-align: left;
+            transition: all 0.3s ease 0s;
+        }
+
+        .trending-designs-div .product-grid4 .title a {
+            color: black;
+        }
+
+        .trending-designs-div .product-grid4 .title a:hover {
+            color: #167ce9;
+        }
+
+        .trending-designs-div .product-grid4 .product-content .product-details-list {
+            list-style-type: none;
+        }
+
+        .trending-designs-div .product-grid4 .product-content .product-details-list li:not(:last-child) {
+            padding: 3px 10px 3px 0;
+        }
+
+        .trending-designs-div .product-grid4 .product-content .product-details-list li {
+            padding: 3px 0;
+            font-size: 13px;
+        }
+
+        .trending-designs-div .product-grid4 .product-content .product-details-list li .icon i {
+            font-size: 15px;
+            color: #f57d05;
+        }
+
+        @media only screen and (max-width: 990px) {
+            .trending-designs-div .product-grid4 {
+                margin-bottom: 30px;
+            }
+        }
+
+        /* ==================================== NUMBER COUNTER =================================================== */
+        .number-counter-div {
+            margin: 60px 0;
+            background: linear-gradient(178.6deg, rgb(20, 36, 50) 11.8%, rgb(124, 143, 161) 83.8%);
+        }
+
+        .number-counter-div .container {
+            padding: 15px 0;
+            max-width: 1000px;
+            text-align: center;
+        }
+
+        .number-counter-div .wrapper {
+            margin: 30px auto;
+        }
+
+        .number-counter-div .count-title {
+            color: white;
+            font-size: 20px;
+            font-weight: 700;
+            margin-top: 10px;
+            margin-bottom: 0;
+            text-align: center;
+        }
+
+        .number-counter-div .count-text {
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+            margin-top: 5px;
+            margin-bottom: 0;
+            text-align: center;
+        }
+
+        .number-counter-div .flat-icon-div img {
+            margin: 0 auto;
+            width: 65px;
+        }
+
+        /* ==================================== PORTFOLIO  =================================================== */
+
+        .portfolio-div .big-title {
+            text-align: left;
+        }
+
+        .portfolio-div .big-title h2 {
+            font-size: 20px;
+            color: #f57d05;
+        }
+
+        .portfolio-div a.view-more-btn-div {
+            float: right;
+            border-radius: 10px;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+        }
+
+        .portfolio-div a.view-more-btn-div button {
+            padding: 5px 13px;
+            background-color: #f57d05;
+            border-radius: 10px;
+            border: 1px solid #f57d05;
+            color: white;
+        }
+
+        .portfolio-div a.view-more-btn-div:hover button {
+            background-color: white;
+            color: #f57d05;
+        }
+
+        :root {
+            --d: 700ms;
+            --e: cubic-bezier(0.19, 1, 0.22, 1);
+            --font-sans: "Rubik", sans-serif;
+            --font-serif: "Cardo", serif;
+        }
+
+
+        .portfolio-div {
+            height: 100%;
+        }
+
+        .portfolio-div {
+            display: grid;
+            place-items: center;
+        }
+
+        .portfolio-div .page-content {
+            display: grid;
+            grid-gap: 1rem;
+            padding: 1rem;
+            width: 85%;
+            margin: 0 auto;
+            font-family: var(--font-sans);
+        }
+
+        @media (min-width: 600px) {
+            .portfolio-div .page-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 800px) {
+            .portfolio-div .page-content {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .portfolio-div .card {
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+            overflow: hidden;
+            padding: 1rem;
+            width: 100%;
+            text-align: center;
+            color: whitesmoke;
+            background-color: whitesmoke;
+            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1), 0 2px 2px rgba(0, 0, 0, 0.1), 0 4px 4px rgba(0, 0, 0, 0.1), 0 8px 8px rgba(0, 0, 0, 0.1), 0 16px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (min-width: 600px) {
+            .portfolio-div .card {
+                height: 350px;
+            }
+        }
+
+        .portfolio-div .card:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 110%;
+            background-size: cover;
+            background-position: 0 0;
+            transition: transform calc(var(--d) * 1.5) var(--e);
+            pointer-events: none;
+        }
+
+        .portfolio-div .card:after {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 200%;
+            pointer-events: none;
+            background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.009) 11.7%, rgba(0, 0, 0, 0.034) 22.1%, rgba(0, 0, 0, 0.072) 31.2%, rgba(0, 0, 0, 0.123) 39.4%, rgba(0, 0, 0, 0.182) 46.6%, rgba(0, 0, 0, 0.249) 53.1%, rgba(0, 0, 0, 0.32) 58.9%, rgba(0, 0, 0, 0.394) 64.3%, rgba(0, 0, 0, 0.468) 69.3%, rgba(0, 0, 0, 0.54) 74.1%, rgba(0, 0, 0, 0.607) 78.8%, rgba(0, 0, 0, 0.668) 83.6%, rgba(0, 0, 0, 0.721) 88.7%, rgba(0, 0, 0, 0.762) 94.1%, rgba(0, 0, 0, 0.79) 100%);
+            transform: translateY(-50%);
+            transition: transform calc(var(--d) * 2) var(--e);
+        }
+
+        .portfolio-div .card:nth-child(1):before {
+            background-image: url(https://pbs.twimg.com/media/FiY8RyhagAIHN4T.jpg:large);
+        }
+
+        .portfolio-div .card:nth-child(2):before {
+            background-image: url(https://i.pinimg.com/736x/b2/b7/77/b2b7770753dbb3807b98a9c8e97ccf55.jpg);
+        }
+
+        .portfolio-div .card:nth-child(3):before {
+            background-image: url(https://housing.com/news/wp-content/uploads/2022/11/image6-98.png);
+        }
+
+        .portfolio-div .content {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            padding: 1rem;
+            transition: transform var(--d) var(--e);
+            z-index: 1;
+        }
+
+        .portfolio-div .content>*+* {
+            margin-top: 1rem;
+        }
+
+        .portfolio-div .title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            line-height: 1.2;
+            padding: 5px 15px;
+            background-color: #f57d05;
+        }
+
+        .portfolio-div .copy {
+            font-family: var(--font-serif);
+            font-size: 1.125rem;
+            text-align: left;
+            line-height: 1.35;
+            padding: 40px;
+        }
+
+        @media (hover: hover) and (min-width: 600px) {
+            .portfolio-div .card:after {
+                transform: translateY(0);
+            }
+
+            .portfolio-div .content {
+                transform: translateY(calc(100% - 4.5rem));
+            }
+
+            .portfolio-div .content>*:not(.title) {
+                opacity: 0;
+                transform: translateY(1rem);
+                transition: transform var(--d) var(--e), opacity var(--d) var(--e);
+            }
+
+            .portfolio-div .card:hover,
+            .portfolio-div .card:focus-within {
+                align-items: center;
+            }
+
+            .portfolio-div .card:hover:before,
+            .portfolio-div .card:focus-within:before {
+                transform: translateY(-4%);
+            }
+
+            .portfolio-div .card:hover:after,
+            .portfolio-div .card:focus-within:after {
+                transform: translateY(-50%);
+            }
+
+            .portfolio-div .card:hover .content,
+            .portfolio-div .card:focus-within .content {
+                transform: translateY(0);
+            }
+
+            .portfolio-div .card:hover .content>*:not(.title),
+            .portfolio-div .card:focus-within .content>*:not(.title) {
+                opacity: 1;
+                transform: translateY(0);
+                transition-delay: calc(var(--d) / 8);
+            }
+
+            .portfolio-div .card:focus-within:before,
+            .portfolio-div .card:focus-within:after,
+            .portfolio-div .card:focus-within .content,
+            .portfolio-div .card:focus-within .content>*:not(.title) {
+                transition-duration: 0s;
+            }
+        }
+
+        /* ==================================== APPOINTMENT DIV =================================================== */
+        .appointment-div {
+
+            background-image: url('https://img.freepik.com/premium-photo/city-buildings-skyline-metropolitan-area_31965-7268.jpg?size=626&ext=jpg&ga=GA1.2.2031644658.1674562410&semt=ais');
+            background-position: center top;
+        }
+
+        .appointment-div .text-side .text h3 {
+            font-size: 35px;
+        }
+
+        .appointment-div .text-side .text p {
+            font-size: 15px;
+        }
+
+        .appointment-div .button-div {
+            background-color: #f57d05;
+            width: 100px;
+            margin-top: 10px;
+        }
+
+        .appointment-div .button-div .btn {
+            padding: 5px 20px;
+            color: white;
+        }
+
+
+        /* ==================================== WHY CHOOSE US =================================================== */
+        @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,500;0,900;1,400&display=swap");
+
+        .why-choose-us-div {
+            margin-top: 50px;
+            color: #333;
+        }
+
+        .why-choose-us-div a:hover {
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .why-choose-us-div a {
+            color: #333 !important;
+        }
+
+        .why-choose-us-div strong {
+            font-weight: 400;
+        }
+
+        .why-choose-us-div li {
+            list-style-type: none;
+        }
+
+        @media only screen and (min-width: 992px) {
+            .why-choose-us-div section {
+                padding: 50px 0;
+            }
+        }
+
+        /* section-headings */
+        .why-choose-us-div .section-inner-headings {
+            padding: 20px 0;
+        }
+
+        @media only screen and (min-width: 992px) {
+            .why-choose-us-div .section-inner-headings {
+                margin-bottom: 20px;
+            }
+        }
+
+        .why-choose-us-div .section-inner-headings .section-inner-title {
+            font-weight: 900;
+            font-size: 1.5rem;
+        }
+
+        @media only screen and (min-width: 992px) {
+            .why-choose-us-div .section-inner-headings .section-inner-title {
+                font-size: 2rem;
+            }
+        }
+
+        .why-choose-us-div .section-inner-headings .section-inner-sub {
+            color: #808080;
+            margin-bottom: 0;
+        }
+
+        /* why-choose-us */
+        .why-choose-us-div .why-choose-us {
+            background-image: url(https://img.freepik.com/free-photo/room-with-blurred-seats_1203-1260.jpg?size=626&ext=jpg&ga=GA1.2.2031644658.1674562410&semt=ais);
+            background-position: 50% 60%;
+            background-attachment: fixed;
+            background-size: cover;
+            padding-bottom: 20px;
+        }
+
+        @media only screen and (min-width: 992px) {
+            .why-choose-us-div .why-choose-us {
+                height: 350px;
+            }
+        }
+
+        .why-choose-us-div .why-choose-us .pxp-services-item-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        @media only screen and (min-width: 992px) {
+            .why-choose-us-div .why-choose-us .pxp-services-item-wrapper {
+                display: flex;
+                box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.1);
+            }
+        }
+
+        .why-choose-us-div .why-choose-us .pxp-services-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #fff;
+            position: relative;
+            overflow: hidden;
+            height: 300px;
+            text-align: center;
+            flex-basis: 100%;
+            padding: 10px;
+            border-bottom: thin solid #909090;
+        }
+
+        .why-choose-us-div .why-choose-us .pxp-services-item:last-child {
+            border-bottom: 0;
+        }
+
+        @media only screen and (min-width: 992px) {
+            .why-choose-us-div .why-choose-us .pxp-services-item {
+                flex: 1;
+                border-right: 1px solid #e8e8e8;
+                border-bottom: 0;
+            }
+        }
+
+        .why-choose-us-div .why-choose-us .pxp-services-item-fig {
+            width: 50px;
+            margin: 0 auto;
+            transition: all 0.4s ease-in-out;
+        }
+
+        .why-choose-us-div .why-choose-us .pxp-services-item-fig img {
+            width: 100%;
+            height: auto;
+        }
+
+        .why-choose-us-div .why-choose-us .pxp-services-item-text {
+            -webkit-transition: all 0.4s ease-in-out;
+            -o-transition: all 0.4s ease-in-out;
+            transition: all 0.4s ease-in-out;
+            transform: translateY(20px);
+            height: 100px;
+        }
+
+        .why-choose-us-div .why-choose-us .pxp-services-item-text .pxp-services-item-text-title {
+            font-weight: 800;
+            color: #f57d05;
+            font-size: 15px;
+            margin-bottom: 0.5rem;
+        }
+
+        .why-choose-us-div .why-choose-us .pxp-services-item-text .pxp-services-item-text-sub {
+            color: #808080;
+            font-size: 12px;
+        }
+
+        /* ==================================== VIDEO GRID ============================================= */
+        .video-grid-div {
+            margin-top: 160px;
+        }
+
+        .video-grid-div .heading {
+            color: #333;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .video-grid-div .heading h6 {
+            font-size: 20px;
+            color: #f57d05;
+            text-shadow: 1px 1px black;
+        }
+
+        .video-grid-div .heading h4 {
+            font-size: 25px;
+            font-weight: 700;
+        }
+
+        .video-grid-div .gallery-video-div {
+            margin: 0 20px 40px 20px
+        }
+
+        .video-grid-div .gallery-video-div .gallery-video {
+            padding: 0 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .video-grid-div .gallery-video-div .video-box {
+            box-sizing: content-box;
+            margin: 10px;
+            overflow: hidden;
+            display: inline-block;
+            color: white;
+            position: relative;
+            background-color: white;
+        }
+
+        .video-grid-div .gallery-video-div .video-box:hover {
+            cursor: pointer;
+        }
+
+
+        /* ==================================== RESIDENTIAL PROJECT SLIDER ============================================ */
+        .residential-project-div a,
+        .residential-project-div a:hover,
+        .residential-project-div a:focus,
+        .residential-project-div a:active {
+            text-decoration: none;
+            outline: none;
+        }
+
+        .residential-project-div a,
+        .residential-project-div a:active,
+        .residential-project-div a:focus {
+            text-decoration: none;
+            transition-timing-function: ease-in-out;
+            -ms-transition-timing-function: ease-in-out;
+            -moz-transition-timing-function: ease-in-out;
+            -webkit-transition-timing-function: ease-in-out;
+            -o-transition-timing-function: ease-in-out;
+            transition-duration: .2s;
+            -ms-transition-duration: .2s;
+            -moz-transition-duration: .2s;
+            -webkit-transition-duration: .2s;
+            -o-transition-duration: .2s;
+        }
+
+        .residential-project-div ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .residential-project-div img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .residential-project-div span,
+        .residential-project-div a,
+        .residential-project-div a:hover {
+            display: inline-block;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .residential-project-div .news-section {
+            padding: 20px 0;
+        }
+
+        .residential-project-div .news-item {
+            box-shadow: 0 0 15px #ededed;
+            -webkit-transition: .5s;
+            -o-transition: .5s;
+            transition: .5s;
+            margin-bottom: 40px;
+        }
+
+        .residential-project-div .news-item:hover {
+            -webkit-transform: translateY(-10px);
+            -ms-transform: translateY(-10px);
+            transform: translateY(-10px);
+            -webkit-box-shadow: 0px 15px 15px 0px #edeaea;
+            box-shadow: 0px 15px 15px 0px #edeaea;
+        }
+
+        .residential-project-div .newsimg img {
+            width: 100%;
+        }
+
+
+        .residential-project-div .news-slide.owl-carousel .col-lg-4 {
+            max-width: 100%;
+            padding: 0;
+        }
+
+        .residential-project-div .news-section .owl-theme .owl-nav [class*="owl-"] {
+            color: #333;
+            font-size: 14px;
+            margin: 5px;
+            padding: 4px 7px;
+            background: #fff;
+            display: inline-block;
+            cursor: pointer;
+            border-radius: 3px;
+            border: 1px solid #ddd;
+        }
+
+        .residential-project-div .big-title {
+            text-align: left;
+        }
+
+        .residential-project-div .big-title h2 {
+            font-size: 20px;
+            color: #f57d05;
+        }
+
+        .residential-project-div a.view-more-btn-div {
+            float: right;
+            border-radius: 10px;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+        }
+
+        .residential-project-div a.view-more-btn-div button {
+            padding: 5px 13px;
+            background-color: #f57d05;
+            border-radius: 10px;
+            border: 1px solid #f57d05;
+            color: white;
+        }
+
+        .residential-project-div a.view-more-btn-div:hover button {
+            background-color: white;
+            color: #f57d05;
+        }
+
+        /* ==================================== COMMERCIAL PROJECT SLIDER ============================================ */
+        .commercial-project-div a,
+        .commercial-project-div a:hover,
+        .commercial-project-div a:focus,
+        .commercial-project-div a:active {
+            text-decoration: none;
+            outline: none;
+        }
+
+        .commercial-project-div a,
+        .commercial-project-div a:active,
+        .commercial-project-div a:focus {
+            text-decoration: none;
+            transition-timing-function: ease-in-out;
+            -ms-transition-timing-function: ease-in-out;
+            -moz-transition-timing-function: ease-in-out;
+            -webkit-transition-timing-function: ease-in-out;
+            -o-transition-timing-function: ease-in-out;
+            transition-duration: .2s;
+            -ms-transition-duration: .2s;
+            -moz-transition-duration: .2s;
+            -webkit-transition-duration: .2s;
+            -o-transition-duration: .2s;
+        }
+
+        .commercial-project-div ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .commercial-project-div img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .commercial-project-div span,
+        .commercial-project-div a,
+        .commercial-project-div a:hover {
+            display: inline-block;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .commercial-project-div .news-section {
+            padding: 10px 0;
+        }
+
+        .commercial-project-div .news-item {
+            box-shadow: 0 0 15px #ededed;
+            -webkit-transition: .5s;
+            -o-transition: .5s;
+            transition: .5s;
+            margin-bottom: 40px;
+        }
+
+        .commercial-project-div .news-item:hover {
+            -webkit-transform: translateY(-10px);
+            -ms-transform: translateY(-10px);
+            transform: translateY(-10px);
+            -webkit-box-shadow: 0px 15px 15px 0px #edeaea;
+            box-shadow: 0px 15px 15px 0px #edeaea;
+        }
+
+        .commercial-project-div .newsimg img {
+            width: 100%;
+        }
+
+
+        .commercial-project-div .news-slide.owl-carousel .col-lg-4 {
+            max-width: 100%;
+            padding: 0;
+        }
+
+        .commercial-project-div .news-section .owl-theme .owl-nav [class*="owl-"] {
+            color: #333;
+            font-size: 14px;
+            margin: 5px;
+            padding: 4px 7px;
+            background: #fff;
+            display: inline-block;
+            cursor: pointer;
+            border-radius: 3px;
+            border: 1px solid #ddd;
+        }
+
+        .commercial-project-div .big-title {
+            text-align: left;
+        }
+
+        .commercial-project-div .big-title h2 {
+            font-size: 20px;
+            color: #f57d05;
+        }
+
+        .commercial-project-div a.view-more-btn-div {
+            float: right;
+            border-radius: 10px;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+        }
+
+        .commercial-project-div a.view-more-btn-div button {
+            padding: 5px 13px;
+            background-color: #f57d05;
+            border-radius: 10px;
+            border: 1px solid #f57d05;
+            color: white;
+        }
+
+        .commercial-project-div a.view-more-btn-div:hover button {
+            background-color: white;
+            color: #f57d05;
+        }
+
+
+        /* ==================================== TESTIMONIAL =================================================== */
+        .testimonial-div {
+            margin-top: 10px;
+        }
+
+        .testimonial-div h5 {
+            color: #f57d05;
+            text-shadow: 1px 1px black;
+        }
+
+        .testimonial-div .card {
+            margin: 0 auto;
+            border: none;
+        }
+
+        .testimonial-div .card .carousel-item {
+            min-height: 190px;
+        }
+
+        .testimonial-div .card .carousel-caption {
+            padding: 0;
+            right: 15px;
+            left: 15px;
+            top: 15px;
+            color: #3d3d3d;
+            border: 1px solid rgb(236, 231, 231);
+            min-height: 175px;
+            padding: 15px;
+        }
+
+        .testimonial-div .card .carousel-caption .col-sm-3 {
+            display: flex;
+            align-items: center;
+        }
+
+        .testimonial-div .card .carousel-caption .col-sm-9 {
+            text-align: left;
+        }
+
+        .testimonial-div .card .carousel-control-prev,
+        .testimonial-div .card .carousel-control-next {
+            color: #3d3d3d !important;
+            opacity: 1 !important;
+        }
+
+        .testimonial-div .carousel-control-prev-icon,
+        .testimonial-div .carousel-control-next-icon {
+            background-image: none;
+            color: #fff;
+            font-size: 14px;
+            background-color: #f57d05;
+            height: 32px;
+            line-height: 32px;
+            width: 32px;
+        }
+
+        .testimonial-div .carousel-control-prev-icon:hover,
+        .testimonial-div .carousel-control-next-icon:hover {
+            opacity: 0.85;
+        }
+
+        .testimonial-div .carousel-control-prev {
+            left: 40%;
+            top: 110%;
+        }
+
+        .testimonial-div .carousel-control-next {
+            right: 40%;
+            top: 110%;
+        }
+
+        .testimonial-div .carousel-caption h2 {
+            font-size: 14px;
+        }
+
+        .testimonial-div .carousel-caption h2 span {
+            color: #f57d05;
+        }
+
+        @media (min-width: 320px) and (max-width: 575px) {
+            .testimonial-div .carousel-caption {
+                position: relative;
+            }
+
+            .testimonial-div .card .carousel-caption {
+                left: 0;
+                top: 0;
+                margin-bottom: 15px;
+            }
+
+            .testimonial-div .card .carousel-caption img {
+                margin: 0 auto;
+            }
+
+            .testimonial-div .carousel-control-prev {
+                left: 35%;
+                top: 105%;
+            }
+
+            .testimonial-div .carousel-control-next {
+                right: 35%;
+                top: 105%;
+            }
+
+            .testimonial-div .card .carousel-caption h3 {
+                margin-top: 0;
+                font-size: 16px;
+                font-weight: 700;
+            }
+        }
+
+        @media (min-width: 576px) and (max-width: 767px) {
+            .testimonial-div .carousel-caption {
+                position: relative;
+            }
+
+            .testimonial-div .card .carousel-caption {
+                left: 0;
+                top: 0;
+                margin-bottom: 15px;
+            }
+
+            .testimonial-div .card .carousel-caption img {
+                margin: 0 auto;
+            }
+
+            .testimonial-div .card .carousel-caption h3,
+            .testimonial-div .card .carousel-caption small {
+                text-align: center;
+            }
+
+            .testimonial-div .carousel-control-prev {
+                left: 35%;
+                top: 105%;
+            }
+
+            .testimonial-div .carousel-control-next {
+                right: 35%;
+                top: 105%;
+            }
+        }
+
+        @media (min-width: 767px) and (max-width: 991px) {
+            .testimonial-div .card .carousel-caption h3 {
+                margin-top: 0;
+                font-size: 16px;
+                font-weight: 700;
+            }
+        }
+
+        /* ==================================== OUR PARTNERS =================================================== */
+        .our-partners-div .demo-row {
+            padding: 50px 0;
+        }
+
+        .our-partners-div h2 {
+
+            margin: 20px;
+            text-shadow: 2px 0 gray;
+        }
+
+        .our-partners-div .sponsor-feature {
+            padding: 20px;
+            border-radius: 5px;
+            min-height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 5px 0;
+        }
+
+        .our-partners-div #id-sponsors .carousel {
+            margin-bottom: 20px;
+        }
+
+        .our-partners-div #id-sponsors .item {
+            padding-bottom: 20px;
+        }
+
+        .our-partners-div #id-sponsors .carousel-indicators {
+            bottom: -25px;
+        }
+
+        /* ==================================== FOOTER =================================================== */
+        footer ul {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .footer-section {
+            background: #004658;
+            position: relative;
+        }
+
+        footer .footer-cta {
+            border-bottom: 1px solid #373636;
+        }
+
+        footer .single-cta i {
+            color: #f57d05;
+            font-size: 30px;
+            float: left;
+            margin-top: 8px;
+        }
+
+        footer .cta-text {
+            padding-left: 15px;
+            display: inline-block;
+        }
+
+        footer .cta-text h4 {
+            color: #fff;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        footer .cta-text span, footer .cta-text span a{
+            color: #757575;
+            font-size: 15px;
+        }
+
+        footer .footer-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        footer .footer-pattern img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 330px;
+            background-size: cover;
+            background-position: 100% 100%;
+        }
+
+        footer .footer-logo {
+            margin-bottom: 30px;
+        }
+
+        footer .footer-logo img {
+            max-width: 200px;
+        }
+
+        footer .footer-text p {
+            margin-bottom: 14px;
+            font-size: 14px;
+            color: #7e7e7e;
+            line-height: 28px;
+        }
+
+        footer .footer-social-icon span{
+            color: #fff;
+            display: block;
+            font-size: 20px;
+            font-weight: 700;
+            font-family: 'Poppins', sans-serif;
+            margin-bottom: 20px;
+        }
+
+        footer .footer-social-icon a {
+            color: #fff;
+            font-size: 16px;
+            margin-right: 15px;
+        }
+
+        footer .footer-social-icon i {
+            height: 40px;
+            width: 40px;
+            text-align: center;
+            line-height: 38px;
+            border-radius: 50%;
+        }
+
+        footer .facebook-bg {
+            background: #3B5998;
+        }
+        footer .facebook-bg:hover {
+            color: #3B5998;
+        }
+        footer .twitter-bg:hover{
+            color:#55ACEE;
+
+        }
+        footer .google-bg:hover{
+             color:#DD4B39;
+        }
+        footer .facebook-bg:hover, footer .twitter-bg:hover, footer .google-bg:hover{
+            background-color: white;
+        }
+
+        footer .twitter-bg {
+            background: #55ACEE;
+        }
+
+        footer .google-bg {
+            background: #DD4B39;
+        }
+
+        footer .footer-widget-heading h3 {
+            color: #fff;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        footer .footer-widget-heading h3::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -15px;
+            height: 2px;
+            width: 50px;
+            background: #f57d05;
+        }
+
+        footer .footer-widget ul li {
+            display: inline-block;
+
+            width: 100%;
+            margin-bottom: 12px;
+        }
+
+        footer .footer-widget ul li a:hover, footer .cta-text span a:hover{
+            color: #f57d05;
+        }
+
+        footer .footer-widget ul li a {
+            color: #878787;
+            text-transform: capitalize;
+        }
+
+        footer .subscribe-form {
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer .subscribe-form input {
+            width: 100%;
+            padding: 14px 28px;
+            background: white;
+            border: 1px solid white;
+            color: #fff;
+        }
+
+        footer .subscribe-form button {
+            position: absolute;
+            right: 0;
+            background: #f57d05;
+            padding: 13px 20px;
+            border: 1px solid #f57d05;
+            top: 0;
+        }
+
+        footer .subscribe-form button i {
+            color: #fff;
+            font-size: 22px;
+            transform: rotate(-6deg);
+        }
+
+        footer .copyright-area {
+            background: #202020;
+            padding: 25px 0;
+        }
+
+        footer .copyright-text p {
+            margin: 0;
+            font-size: 14px;
+            color: #878787;
+        }
+
+        footer .copyright-text p a {
+            color: #f57d05;
+        }
+
+        footer .footer-menu li {
+            display: inline-block;
+            margin-left: 20px;
+        }
+
+        .footer-menu li:hover a {
+            color: #f57d05;
+        }
+
+        .footer-menu li a {
+            font-size: 14px;
+            color: #878787;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="navbar sticky">
+        <a href="#" class="logo">
+           <div class="logo-div">
+            <img src="https://www.modernhousemaker.com/MHM/img/logo.png" alt="" class="img-fluid">
+           </div>
+        </a>
+        <div class="menu-btn">
+            <div class="menu-btn__lines"></div>
+        </div>
+        <ul class="menu-items">
+            <li><a href="#" class="menu-item first-item">Home</a></li>
+            <li><a href="#" class="menu-item first-item">About Us</a></li>
+            <li><a href="#" class="menu-item first-item">Elevation</a></li>
+            <li>
+                <a href="#" class="menu-item first-item expand-btn">Designs</a>
+                <div class="mega-menu sample">
+                    <div class="content">
+                        <div class="col">
+                            <section>
+                                <div class="menu-title"></div>
+                                <ul class="mega-links">
+                                    <li><a href="#" class="menu-item">26x50 House Design Plans</a></li>
+                                    <li><a href="#" class="menu-item">30x40 House Design Plans</a></li>
+                                    <li><a href="#" class="menu-item">30x45 House Design Plans</a></li>
+                                    <li><a href="#" class="menu-item">30x50 House Design Plans</a></li>
+                                    <li><a href="#" class="menu-item">30x60 House Design Plans</a></li>
+                                    <li><a href="#" class="menu-item">30x65 House Design Plans</a></li>
+                                    <li><a href="#" class="menu-item">35x60 House Design Plans</a></li>
+                                    <li><a href="#" class="menu-item">40x50 House Design Plans</a></li>
+                                    <li><a href="#" class="menu-item">40x60 House Design Plans</a></li>
+                                    <li><a href="#" class="menu-item">40x80 House Design Plans</a></li>
+                                    <li><a href="#" class="menu-item">50x60 House Design Plans</a></li>
+                                </ul>
+                            </section>
+                        </div>
+                        <div class="col">
+                            <section>
+                                <div class="menu-title"></div>
+                                <ul class="mega-links">
+                                    <li><a href="#" class="menu-item">50x90 House Design Plans</a></li>
+                                    <li><a href="#" class="menu-item">40x70 House Design Plans</a></li>
+                                    <li><a href="#" class="menu-item">25x60 House Design Plans</a></li>
+                                    <li><a href="#" class="menu-item">30x80 House Design Plans</a></li>
+                                    <li><a href="#" class="menu-item">15x50 House Design Plans</a></li>
+                                    <li><a href="#" class="menu-item">33x60 House Design Plans</a></li>
+                                    <li><a href="#" class="menu-item">25x50 House Design Plans</a></li>
+                                    <li><a href="#" class="menu-item">25x60 House Design Plans</a></li>
+                                    <li><a href="#" class="menu-item">30x70 House Design Plans</a></li>
+                                    <li><a href="#" class="menu-item">20x40 House Design Plans</a></li>
+                                    <li><a href="#" class="menu-item">15x40 House Design Plans</a></li>
+                                </ul>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li><a href="#" class="menu-item first-item">Interior</a></li>
+            <li><a href="#" class="menu-item first-item">Contact Us</a></li>
+        </ul>
+    </header>
+
+
+
+    <!---------------------------------- BANNER -------------------------------------------------------->
+    <div class="banner-carousel">
+        <div class="row-banner">
+        </div>
+    </div>
+
+    <!---------------------------------- ABOUT US -------------------------------------------------------->
+    <div class="about-us container">
+        <div class="row">
+            <div class="col-md-6 about-content-side">
+                <div class="heading">
+                    <h1>Welcome to <span>India's Leading Architecture Brand</span></h1>
+                </div>
+                <div class="content">
+                    <p class="bold-text">We have a dynamic and innovative design Experts who strive to provide fast and
+                        reliable services at unbeatable prices.
+                    <p></p>
+                    <p>We have a team of Experts that are able to give you the accurate design of your given measurement
+                        no matter where you are.</p>
+                    <p></p>
+                    <p>Everyone has a dream to make his/her dream house ,MHM are the Biggest Architectural Organisation,
+                        who is designing your dream. Once you purchase a Plot ,Apartment ,Flat Modernhousemaker.com
+                        helps you with all your planning and design needs without needing a time consuming and expensive
+                        visit to an engineer or a designer just because all drawings will be with its working..</p>
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-6 about-image-side">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-6 image-left-col">
+                            <div class="image-div">
+                                <img src="https://www.inventiva.co.in/wp-content/uploads/2022/09/luxury-house-demand.jpg"
+                                    alt="" class="img-fluid">
+                            </div>
+                            <div class="image-div mt-4">
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkrvQmQxinbe1QGmRzdoTuVihfXIKJYqSdpy_dWXCGKk5VRqoy_pSVSFf7Rz_WqcXhe69LAmXIbxc&usqp=CAU&ec=48600112"
+                                    alt="" class="img-fluid">
+                            </div>
+                        </div>
+                        <div class="col-6 image-right-col">
+                            <div class="image-div">
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkrvQmQxinbe1QGmRzdoTuVihfXIKJYqSdpy_dWXCGKk5VRqoy_pSVSFf7Rz_WqcXhe69LAmXIbxc&usqp=CAU&ec=48600112"
+                                    alt="" class="img-fluid">
+                            </div>
+                            <div class="image-div mt-4">
+                                <img src="https://www.inventiva.co.in/wp-content/uploads/2022/09/luxury-house-demand.jpg"
+                                    alt="" class="img-fluid">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!---------------------------------- QUICK CHECKOUT -------------------------------------------------------->
+    <div class="quick-checkout-div">
+        <div class="container">
+            <div class="row">
+                <div class="col-4">
+                    <a href="" class="item item-1">
+                        <img src="https://cdn-icons-png.flaticon.com/128/9215/9215647.png" alt="">
+                    </a>
+                    <div class="image-text">
+                        Interior
+                    </div>
+                </div>
+                <div class="col-4">
+                    <a href="" class="item item-2">
+                        <img src="https://cdn-icons-png.flaticon.com/128/899/899154.png" alt="">
+                    </a>
+                    <div class="image-text">
+                        Design
+                    </div>
+                </div>
+                <div class="col-4">
+                    <a href="" class="item">
+                        <img src="https://cdn-icons-png.flaticon.com/128/6676/6676597.png" alt="">
+                    </a>
+                    <div class="image-text">
+                        Elevation
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!---------------------------------- FEATURES -------------------------------------------------------->
+    <div class="features-div">
+        <section id="features" class="section-padding">
+            <div class="container">
+                <div class="section-header text-center">
+                    <h2 class="section-title wow fadeInDown">Awesome Features</h2>
+                    <div class="shape wow fadeInDown"></div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+                        <div class="content-left">
+                            <div class="box-item animated wow fadeInLeft">
+                                <span class="icon">
+                                    <img src="https://cdn-icons-png.flaticon.com/128/3696/3696530.png" alt="">
+                                </span>
+                                <div class="text">
+                                    <h4>FLOOR PLAN</h4>
+                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                                </div>
+                            </div>
+                            <div class="box-item animated wow fadeInLeft" data-wow-delay="0.6s">
+                                <span class="icon">
+                                    <img src="https://cdn-icons-png.flaticon.com/128/4698/4698344.png" alt="">
+                                </span>
+                                <div class="text">
+                                    <h4>INTERIOR DESIGN</h4>
+                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+                        <div class="show-box animated wow fadeInUp">
+                            <img src="https://img.freepik.com/free-vector/house-illustration_23-2147500295.jpg?w=740&t=st=1686658881~exp=1686659481~hmac=78c9ff59f9c84e8afdbcd1f524f65231d3653b888cc92bd2aad843db3f321036"
+                                alt="">
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+                        <div class="content-right">
+                            <div class="box-item animated wow fadeInRight">
+                                <span class="icon">
+                                    <img src="https://cdn-icons-png.flaticon.com/128/9308/9308836.png" alt="">
+                                </span>
+                                <div class="text">
+                                    <h4>HOUSE ELEVATION</h4>
+                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
+                                </div>
+                            </div>
+                            <div class="box-item animated wow fadeInRight" data-wow-delay="0.6s">
+                                <span class="icon">
+                                    <img src="https://cdn-icons-png.flaticon.com/128/3205/3205769.png" alt="">
+                                </span>
+                                <div class="text">
+                                    <h4>VASTU CONSULTATION</h4>
+                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!---------------------------------- services-2 -------------------------------------------------------->
+    <div class="services-2-div">
+        <section class="container">
+            <h2>Our Sevices</h2>
+            <div class="row">
+                <div class="service">
+                    <img src="https://cdn-icons-png.flaticon.com/128/3696/3696530.png" alt="">
+                    <h3>Readymade House Design</h3>
+                </div>
+                <div class="service">
+                    <img src="https://cdn-icons-png.flaticon.com/128/2714/2714636.png" alt="">
+                    <h3>Customized House Design</h3>
+                </div>
+                <div class="service">
+                    <img src="https://cdn-icons-png.flaticon.com/128/9215/9215647.png" alt="">
+                    <h3>Interior Designing</h3>
+                </div>
+                <div class="service">
+                    <img src="https://cdn-icons-png.flaticon.com/128/3696/3696530.png" alt="">
+                    <h3>Readymade House Design</h3>
+                </div>
+                <div class="service">
+                    <img src="https://cdn-icons-png.flaticon.com/128/3305/3305926.png" alt="">
+                    <h3>Floor Plan</h3>
+                </div>
+                <div class="service">
+                    <img src="https://cdn-icons-png.flaticon.com/128/9308/9308836.png" alt="">
+                    <h3>Front Elevation</h3>
+                </div>
+                <div class="service">
+                    <img src="https://cdn-icons-png.flaticon.com/128/2942/2942149.png" alt="">
+                    <h3>Commercial Designs</h3>
+                </div>
+                <div class="service">
+                    <img src="https://cdn-icons-png.flaticon.com/128/6629/6629717.png" alt="">
+                    <h3>3D Floor Plan</h3>
+                </div>
+                <div class="service">
+                    <img src="https://cdn-icons-png.flaticon.com/128/3658/3658959.png" alt="">
+                    <h3>Video Walkthrough</h3>
+                </div>
+                <div class="service">
+                    <img src="https://cdn-icons-png.flaticon.com/128/3205/3205769.png" alt="">
+                    <h3>Vastu Consultancy</h3>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!---------------------------------- SPECIAL OFFER -------------------------------------------------------->
+
+
+    <!---------------------------------- FLOOR PLAN -------------------------------------------------------->
+    <div class="floor-plan-div">
+        <section class="news-section">
+            <div class="container">
+                <div class="main-title-box row">
+                    <div class="col-6">
+                        <div class="big-title">
+                            <h2>Floor Plan</h2>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <a href="" class="view-more-btn-div">
+                            <button>View More</button>
+                        </a>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <!--Single Blog Start-->
+                    <a href="" class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0ms">
+                        <div class="news-item">
+                            <div class="news_box">
+                                <div class="newsimg"><img class="img-responsive"
+                                        src="https://www.modernhousemaker.com/products/5111671001416MR_SHAHNAWAJ_JI_FLOOR_R_1_(2)_page-0001.jpg"
+                                        alt=""></div>
+                            </div>
+                        </div>
+                    </a>
+                    <!--Single Blog End-->
+                    <!--Single Blog Start-->
+                    <a href=""  class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="400ms">
+                        <div class="news-item active">
+                            <div class="news_box">
+                                <div class="newsimg"><img class="img-responsive"
+                                        src="https://www.modernhousemaker.com/products/5111671001416MR_SHAHNAWAJ_JI_FLOOR_R_1_(2)_page-0001.jpg"
+                                        alt=""></div>
+                            </div>
+                        </div>
+                    </a>
+                    <!--Single Blog End-->
+                    <!--Single Blog Start-->
+                    <a href="" class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="800ms">
+                        <div class="news-item">
+                            <div class="news_box">
+                                <div class="newsimg"><img class="img-responsive"
+                                        src="https://www.modernhousemaker.com/products/5111671001416MR_SHAHNAWAJ_JI_FLOOR_R_1_(2)_page-0001.jpg"
+                                        alt=""></div>
+                            </div>
+                        </div>
+                    </a>
+                    <!--Single Blog End-->
+                    <!--Single Blog Start-->
+                    <a href=""  class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="800ms">
+                        <div class="news-item">
+                            <div class="news_box">
+                                <div class="newsimg"><img class="img-responsive"
+                                        src="https://www.modernhousemaker.com/products/5111671001416MR_SHAHNAWAJ_JI_FLOOR_R_1_(2)_page-0001.jpg"
+                                        alt=""></div>
+                            </div>
+                        </div>
+                    </a>
+                    <!--Single Blog End-->
+                </div>
+            </div>
+    </div>
+
+    <!---------------------------------- TRENDING DESIGNS -------------------------------------------------------->
+    <div class="trending-designs-div">
+        <div class="container">
+            <div class="main-title-box row">
+                <div class="col-6">
+                    <div class="big-title">
+                        <h2>Trending House Designs</h2>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <a href="" class="view-more-btn-div">
+                        <button>View More</button>
+                    </a>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-3 col-sm-6">
+                    <div class="product-grid4">
+                        <div class="product-image4">
+                            <a href="#">
+                                <img class="pic-1"
+                                    src="https://www.modernhousemaker.com/products/111605982486HEMANT%20SIR_01.jpg">
+
+                            </a>
+                            <ul class="view-details">
+                                <li><a class="view-details-btn" href="">View Details</a></li>
+                            </ul>
+                            <span class="product-new-label">Design Code HD2</span>
+                            <span class="product-discount-label">Rs.4500/-</span>
+                        </div>
+                        <div class="product-content">
+                            <h3 class="title"><a href="#">32X75 sqft Simple Two Storey House Design
+                                </a></h3>
+                            <ul class="product-details-list d-flex">
+                                <li class="d-flex">
+                                    <div class="icon">
+                                        <i class="fa-regular fa-compass mr-1"></i>
+                                    </div>
+                                    South
+                                </li>
+                                <li class="d-flex">
+                                    <div class="icon">
+                                        <i class="fa-solid fa-chart-area mr-1"></i>
+                                    </div>
+                                    2400 sqft
+                                </li>
+                                <li class="d-flex">
+                                    <div class="icon">
+                                        <i class="fa-solid fa-crop mr-1"></i>
+                                    </div>
+                                    32x75
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="product-grid4">
+                        <div class="product-image4">
+                            <a href="#">
+                                <img class="pic-1"
+                                    src="https://www.modernhousemaker.com/products/111605982486HEMANT%20SIR_01.jpg">
+
+                            </a>
+                            <ul class="view-details">
+                                <li><a class="view-details-btn" href="">View Details</a></li>
+                            </ul>
+                            <span class="product-new-label">Design Code HD2</span>
+                            <span class="product-discount-label">Rs.4500/-</span>
+                        </div>
+                        <div class="product-content">
+                            <h3 class="title"><a href="#">32X75 sqft Simple Two Storey House Design
+                                </a></h3>
+                            <ul class="product-details-list d-flex">
+                                <li class="d-flex">
+                                    <div class="icon">
+                                        <i class="fa-regular fa-compass mr-1"></i>
+                                    </div>
+                                    South
+                                </li>
+                                <li class="d-flex">
+                                    <div class="icon">
+                                        <i class="fa-solid fa-chart-area mr-1"></i>
+                                    </div>
+                                    2400 sqft
+                                </li>
+                                <li class="d-flex">
+                                    <div class="icon">
+                                        <i class="fa-solid fa-crop mr-1"></i>
+                                    </div>
+                                    32x75
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="product-grid4">
+                        <div class="product-image4">
+                            <a href="#">
+                                <img class="pic-1"
+                                    src="https://www.modernhousemaker.com/products/111605982486HEMANT%20SIR_01.jpg">
+
+                            </a>
+                            <ul class="view-details">
+                                <li><a class="view-details-btn" href="">View Details</a></li>
+                            </ul>
+                            <span class="product-new-label">Design Code HD2</span>
+                            <span class="product-discount-label">Rs.4500/-</span>
+                        </div>
+                        <div class="product-content">
+                            <h3 class="title"><a href="#">32X75 sqft Simple Two Storey House Design
+                                </a></h3>
+                            <ul class="product-details-list d-flex">
+                                <li class="d-flex">
+                                    <div class="icon">
+                                        <i class="fa-regular fa-compass mr-1"></i>
+                                    </div>
+                                    South
+                                </li>
+                                <li class="d-flex">
+                                    <div class="icon">
+                                        <i class="fa-solid fa-chart-area mr-1"></i>
+                                    </div>
+                                    2400 sqft
+                                </li>
+                                <li class="d-flex">
+                                    <div class="icon">
+                                        <i class="fa-solid fa-crop mr-1"></i>
+                                    </div>
+                                    32x75
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="product-grid4">
+                        <div class="product-image4">
+                            <a href="#">
+                                <img class="pic-1"
+                                    src="https://www.modernhousemaker.com/products/111605982486HEMANT%20SIR_01.jpg">
+
+                            </a>
+                            <ul class="view-details">
+                                <li><a class="view-details-btn" href="">View Details</a></li>
+                            </ul>
+                            <span class="product-new-label">Design Code HD2</span>
+                            <span class="product-discount-label">Rs.4500/-</span>
+                        </div>
+                        <div class="product-content">
+                            <h3 class="title"><a href="#">32X75 sqft Simple Two Storey House Design
+                                </a></h3>
+                            <ul class="product-details-list d-flex">
+                                <li class="d-flex">
+                                    <div class="icon">
+                                        <i class="fa-regular fa-compass mr-1"></i>
+                                    </div>
+                                    South
+                                </li>
+                                <li class="d-flex">
+                                    <div class="icon">
+                                        <i class="fa-solid fa-chart-area mr-1"></i>
+                                    </div>
+                                    2400 sqft
+                                </li>
+                                <li class="d-flex">
+                                    <div class="icon">
+                                        <i class="fa-solid fa-crop mr-1"></i>
+                                    </div>
+                                    32x75
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!---------------------------------- NUMBER COUNTER -------------------------------------------------------->
+    <div class="number-counter-div">
+        <div class="container">
+            <div class="wrapper row">
+                <div class="col-md-3 col-6  counter col_fourth">
+                    <div class="flat-icon-div">
+                        <img src="https://cdn-icons-png.flaticon.com/128/2942/2942488.png" alt="">
+                    </div>
+                    <h2 class="timer count-title count-number" data-to="7000" data-speed="1500"></h2>
+                    <p class="count-text ">Projects Done</p>
+                </div>
+
+                <div class="col-md-3 col-6  counter col_fourth">
+                    <div class="flat-icon-div">
+                        <img src="https://cdn-icons-png.flaticon.com/128/2603/2603724.png" alt="">
+                    </div>
+                    <h2 class="timer count-title count-number" data-to="5000" data-speed="1500"></h2>
+                    <p class="count-text ">Cities coverede</p>
+                </div>
+
+                <div class="col-md-3 col-6  counter col_fourth">
+                    <div class="flat-icon-div">
+                        <img src="https://cdn-icons-png.flaticon.com/128/1647/1647748.png" alt="">
+                    </div>
+                    <h2 class="timer count-title count-number" data-to="4500" data-speed="1500"></h2>
+                    <p class="count-text ">Residential projects done</p>
+                </div>
+
+                <div class="col-md-3 col-6  counter col_fourth end">
+                    <div class="flat-icon-div">
+                        <img src="https://cdn-icons-png.flaticon.com/128/602/602232.png" alt="">
+                    </div>
+                    <h2 class="timer count-title count-number" data-to="2000" data-speed="1500"></h2>
+                    <p class="count-text ">Commercial Projects Done</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!---------------------------------- PORTFOLIO -------------------------------------------------------->
+    <div class="portfolio-div">
+        <div class="container">
+            <div class="main-title-box row">
+                <div class="col-6">
+                    <div class="big-title">
+                        <h2>Portfolio</h2>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <a href="" class="view-more-btn-div">
+                        <button>View More</button>
+                    </a>
+                </div>
+            </div>
+            <hr>
+        </div>
+        <main class="page-content">
+            <div class="card">
+                <div class="content">
+                    <h2 class="title">Traditional</h2>
+                    <ul class="copy">
+                        <li>Client Name : Hari Shankar</li>
+                        <li>Plot Size : 60Feetx40</li>
+                        <li>Feet Area : 2400 Sqft</li>
+                        <li>City : Hoshangabad</li>
+                        <li>State : MP</li>
+                        <li>Entities : 6BHK</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card">
+                <div class="content">
+                    <h2 class="title">Classic</h2>
+                    <ul class="copy">
+                        <li>Client Name : Hari Shankar</li>
+                        <li>Plot Size : 60Feetx40</li>
+                        <li>Feet Area : 2400 Sqft</li>
+                        <li>City : Hoshangabad</li>
+                        <li>State : MP</li>
+                        <li>Entities : 6BHK</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card">
+                <div class="content">
+                    <h2 class="title">Modern</h2>
+                    <ul class="copy">
+                        <li>Client Name : Hari Shankar</li>
+                        <li>Plot Size : 60Feetx40</li>
+                        <li>Feet Area : 2400 Sqft</li>
+                        <li>City : Hoshangabad</li>
+                        <li>State : MP</li>
+                        <li>Entities : 6BHK</li>
+                    </ul>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!---------------------------------- APPOINTMENT DIV -------------------------------------------------------->
+    <div class="appointment-div my-3">
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-sm-10 text-side">
+                    <div class="text pr-sm-4">
+                        <h3>We Operate Internationally As Well.</h3>
+                        <p>Not in India, Not an issue! get your design made from anywhere around the world.</p>
+                    </div>
+                </div>
+                <div class="col-sm-2 button-side text-center">
+                    <div class="button-div">
+                        <button class="btn">Call Us</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!---------------------------------- WHY CHOOSE US -------------------------------------------------------->
+    <div class="why-choose-us-div">
+        <section class="why-choose-us rellax" data-rellax-speed="1" data-rellax-percentage="0.5">
+            <div class="container">
+                <div class="section-inner-headings text-center " data-aos="fade-up">
+                    <h4 class="section-inner-title">Why Choose Us</h4>
+                    <p class="section-inner-sub"></p>
+                </div>
+                <div class="pxp-services-item-wrapper ">
+                    <div class="pxp-services-item item">
+                        <div class="pxp-services-item-fig translate2">
+                            <img src="https://cdn-icons-png.flaticon.com/128/899/899154.png" alt="...">
+                        </div>
+                        <div class="pxp-services-item-text translate2">
+                            <h5 class="pxp-services-item-text-title">100% Customized Design</h5>
+                            <h6 class="pxp-services-item-text-sub">We also design award-winning custom house plans.
+                                Architect's Team has been designing homes for clients' all over the world for nearly 5
+                                years.
+                            </h6>
+                        </div>
+                    </div>
+
+                    <div class="pxp-services-item  item ">
+                        <div class="pxp-services-item-fig translate2">
+                            <img src="https://cdn-icons-png.flaticon.com/128/2997/2997985.png" alt="...">
+                        </div>
+                        <div class="pxp-services-item-text translate2">
+                            <h5 class="pxp-services-item-text-title">Time Saving</h5>
+                            <div class="pxp-services-item-text-sub">
+                                <p>Energy Time saving house design from www.modernhousemaker.com The planning and
+                                    designing process is also required less time to look into a proper designs that can
+                                    be provide comfort, satisfaction, and living standard.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pxp-services-item item">
+                        <div class="pxp-services-item-fig translate2">
+                            <img src="https://cdn-icons-png.flaticon.com/128/10279/10279791.png" alt="...">
+                        </div>
+                        <div class="pxp-services-item-text translate2">
+                            <h5 class="pxp-services-item-text-title">High Accuracy Drawings</h5>
+                            <h6 class="pxp-services-item-text-sub">All drawings checked by team, high aesthetic quality
+                                in a work o art, it is nevertheless an important ...</h6>
+                        </div>
+
+                    </div>
+                    <div class="pxp-services-item item">
+                        <div class="pxp-services-item-fig translate2">
+                            <img src="https://cdn-icons-png.flaticon.com/128/3135/3135706.png" alt="...">
+                        </div>
+                        <div class="pxp-services-item-text translate2">
+                            <h5 class="pxp-services-item-text-title">Cost Saving</h5>
+                            <h6 class="pxp-services-item-text-sub">Tested ,Quality, value engineered house plans
+                                utilizing a grid system layout provide affordable, cost-effective construction and use
+                                building materials with proper grading.
+                            </h6>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+    </div>
+
+    <!---------------------------------- VIDEO GRID -------------------------------------------------------->
+    <div class="video-grid-div">
+        <div class="heading">
+            <h6>Video</h6>
+            <h4>India House Design Company Youtube Videos</h4>
+        </div>
+        <div class="gallery-video-div">
+            <div class="gallery-video mt-3">
+                <div class="item">
+                    <iframe width="100%" height="250" src="https://www.youtube.com/embed/eE7LkaLr_x4"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen=""></iframe>
+                </div>
+                <div class="item">
+                    <iframe width="100%" height="250" src="https://www.youtube.com/embed/eE7LkaLr_x4"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen=""></iframe>
+                </div>
+                <div class="item">
+                    <iframe width="100%" height="250" src="https://www.youtube.com/embed/eE7LkaLr_x4"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen=""></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!------------------------------- RESIDENTIAL PROJECT SLIDER --------------------------------------->
+    <div class="residential-project-div">
+        <section class="news-section">
+            <div class="container">
+                <div class="main-title-box row">
+                    <div class="col-6">
+                        <div class="big-title">
+                            <h2>Residential Project</h2>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <a href="" class="view-more-btn-div">
+                            <button>View More</button>
+                        </a>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <!--Single Blog Start-->
+                    <a href=""  class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0ms">
+                        <div class="news-item">
+                            <div class="news_box">
+                                <div class="newsimg"><img class="img-responsive"
+                                        src="https://www.modernhousemaker.com//projects/con_1625038484801624694401733.jpg"
+                                        alt=""></div>
+                            </div>
+                        </div>
+                    </a>
+                    <!--Single Blog End-->
+                    <!--Single Blog Start-->
+                    <a href="" class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="400ms">
+                        <div class="news-item active">
+                            <div class="news_box">
+                                <div class="newsimg"><img class="img-responsive"
+                                        src="https://www.modernhousemaker.com//projects/con_1625038484801624694401733.jpg"
+                                        alt=""></div>
+                            </div>
+                        </div>
+                    </a>
+                    <!--Single Blog End-->
+                    <!--Single Blog Start-->
+                    <a href="" class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="800ms">
+                        <div class="news-item">
+                            <div class="news_box">
+                                <div class="newsimg"><img class="img-responsive"
+                                        src="https://www.modernhousemaker.com//projects/con_1625038484801624694401733.jpg"
+                                        alt=""></div>
+                            </div>
+                        </div>
+                    </a>
+                    <!--Single Blog End-->
+                    <!--Single Blog Start-->
+                    <a href="" class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="800ms">
+                        <div class="news-item">
+                            <div class="news_box">
+                                <div class="newsimg"><img class="img-responsive"
+                                        src="https://www.modernhousemaker.com//projects/con_1625038484801624694401733.jpg"
+                                        alt=""></div>
+                            </div>
+                        </div>
+                    </a>
+                    <!--Single Blog End-->
+                </div>
+            </div>
+    </div>
+
+    <!------------------------------- COMMERCIAL PROJECT SLIDER --------------------------------------->
+    <div class="commercial-project-div">
+        <section class="news-section">
+            <div class="container">
+                <div class="main-title-box row">
+                    <div class="col-6">
+                        <div class="big-title">
+                            <h2>Commercial Project</h2>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <a href="" class="view-more-btn-div">
+                            <button>View More</button>
+                        </a>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <!--Single Blog Start-->
+                    <a href="" class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0ms">
+                        <div class="news-item">
+                            <div class="news_box">
+                                <div class="newsimg"><img class="img-responsive"
+                                        src="https://img.favpng.com/19/14/4/mixed-use-residential-area-commercial-building-architecture-house-png-favpng-BaU0r3j8SnvJbYPcmDvQe68M0.jpg"
+                                        alt=""></div>
+                            </div>
+                        </div>
+                    </a>
+                    <!--Single Blog End-->
+                    <!--Single Blog Start-->
+                    <a href="" class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="400ms">
+                        <div class="news-item active">
+                            <div class="news_box">
+                                <div class="newsimg"><img class="img-responsive"
+                                        src="https://img.favpng.com/19/14/4/mixed-use-residential-area-commercial-building-architecture-house-png-favpng-BaU0r3j8SnvJbYPcmDvQe68M0.jpg"
+                                        alt=""></div>
+                            </div>
+                        </div>
+                    </a>
+                    <!--Single Blog End-->
+                    <!--Single Blog Start-->
+                    <a href="" class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="800ms">
+                        <div class="news-item">
+                            <div class="news_box">
+                                <div class="newsimg"><img class="img-responsive"
+                                        src="https://img.favpng.com/19/14/4/mixed-use-residential-area-commercial-building-architecture-house-png-favpng-BaU0r3j8SnvJbYPcmDvQe68M0.jpg"
+                                        alt=""></div>
+                            </div>
+                        </div>
+                    </a>
+                    <!--Single Blog End-->
+                    <!--Single Blog Start-->
+                    <a href="" class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="800ms">
+                        <div class="news-item">
+                            <div class="news_box">
+                                <div class="newsimg"><img class="img-responsive"
+                                        src="https://img.favpng.com/19/14/4/mixed-use-residential-area-commercial-building-architecture-house-png-favpng-BaU0r3j8SnvJbYPcmDvQe68M0.jpg"
+                                        alt=""></div>
+                            </div>
+                        </div>
+                    </a>
+                    <!--Single Blog End-->
+                </div>
+            </div>
+    </div>
+
+    <!---------------------------------- TESTIMONIAL -------------------------------------------------------->
+    <div class="testimonial-div">
+        <section class="pt-5 pb-5">
+            <div class="container">
+                <h2 class="text-center">What other say for us</h2>
+                <h5 class="text-center mb-5">Our team created best opportunities for your business.</h5>
+                <div class="card col-md-12 mt-2">
+                    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="3000">
+                        <div class="w-100 carousel-inner mb-5" role="listbox">
+                            <div class="carousel-item active">
+                                <div class="bg"></div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="carousel-caption">
+                                            <div class="row">
+                                                <div class="col-sm-3 col-4 align-items-start">
+                                                    <img src="https://www.modernhousemaker.com/MHM/img/photo3.jpg"
+                                                        alt="" class="rounded-circle img-fluid">
+                                                </div>
+                                                <div class="col-sm-9 col-8">
+                                                    <h2>K Sai - <span>Machilipatnam, Andhra Pradesh</span></h2>
+                                                    <small>Well incremented. Comes with recommended workout. I'm using
+                                                        it to help with bladder leakage issues that I've been
+                                                        experiencing since a recent vasectomy.</small>
+                                                    <small class="smallest mute">- willi</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="carousel-caption">
+                                            <div class="row">
+                                                <div class="col-sm-3 col-4 align-items-start">
+                                                    <img src="https://www.modernhousemaker.com/MHM/img/photo1.jpg"
+                                                        alt="" class="rounded-circle img-fluid">
+                                                </div>
+                                                <div class="col-sm-9 col-8">
+                                                    <h2>Visweswarareddy Ambu - <span>Rayachoti, Andhra Pradesh</span>
+                                                    </h2>
+                                                    <small>Well incremented. Comes with recommended workout. I'm using
+                                                        it to help with bladder leakage issues that I've been
+                                                        experiencing since a recent vasectomy.</small>
+                                                    <small class="smallest mute">- willi</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="bg"></div>
+                                <div class="row">
+                                    <div class="col-md-6 col-12">
+                                        <div class="carousel-caption">
+                                            <div class="row">
+                                                <div class="col-sm-3 col-4 align-items-start">
+                                                    <img src="https://www.modernhousemaker.com/MHM/img/photofc.jpg"
+                                                        alt="" class="rounded-circle img-fluid">
+                                                </div>
+                                                <div class="col-sm-9 col-8">
+                                                    <h2>FC Verma - <span>Yamnotri, Uttarakhand</span></h2>
+                                                    <small>Well incremented. Comes with recommended workout. I'm using
+                                                        it to help with bladder leakage issues that I've been
+                                                        experiencing since a recent vasectomy.</small>
+                                                    <small class="smallest mute">- willi</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-12">
+                                        <div class="carousel-caption">
+                                            <div class="row">
+                                                <div class="col-sm-3 col-4 align-items-start">
+                                                    <img src="https://www.modernhousemaker.com/MHM/img/photo5.jpg"
+                                                        alt="" class="rounded-circle img-fluid">
+                                                </div>
+                                                <div class="col-sm-9 col-8">
+                                                    <h2>Santram Kosaria - <span>Yamnotri, Uttarakhand</span></h2>
+                                                    <small>Well incremented. Comes with recommended workout. I'm using
+                                                        it to help with bladder leakage issues that I've been
+                                                        experiencing since a recent vasectomy.</small>
+                                                    <small class="smallest mute">- willi</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"><i
+                                    class="fas fa-chevron-left"></i></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"><i
+                                    class="fas fa-chevron-right"></i></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!---------------------------------- OUR PARTNERS -------------------------------------------------------->
+    <div class="our-partners-div ">
+        <div class="demo-row">
+            <div class="container" id="id-sponsors">
+                <div class="text-center">
+                    <h2>Our Partners</h2>
+                </div>
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner" role="listbox">
+                    <div class="item active">
+                        <div class="row">
+                            <a href="" class="col-sm-3 col-xs-6">
+                                <div class="sponsor-feature"><img alt=""
+                                        src="https://itagroup.hs.llnwd.net/o40/csg/pse-demo/channel-incentive/nucor-logo.svg"
+                                        style="width: 200px;" /></div>
+                            </a>
+                            <a href="" class="col-sm-3 col-xs-6">
+                                <div class="sponsor-feature"><img alt=""
+                                        src="https://itagroup.hs.llnwd.net/o40/csg/pse-demo/channel-incentive/logo-mil.png"
+                                        style="width: 155px;" /></div>
+                            </a>
+                            <a href="" class="col-sm-3 col-xs-6">
+                                <div class="sponsor-feature"><img alt=""
+                                        src="https://itagroup.hs.llnwd.net/o40/csg/pse-demo/channel-incentive/logo-timberline.jpg"
+                                        style="width: 200px;" /></div>
+                            </a>
+                            <a href="" class="col-sm-3 col-xs-6">
+                                <div class="sponsor-feature"><img alt=""
+                                        src="https://itagroup.hs.llnwd.net/o40/csg/pse-demo/channel-incentive/logo-ppg.jpg"
+                                        style="width: 200px;" /></div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--  -->
+    <footer class="footer-section">
+        <div class="container">
+            <div class="footer-cta pt-5 pb-5">
+                <div class="row">
+                    <div class="col-xl-4 col-md-4 mb-30">
+                        <div class="single-cta">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div class="cta-text">
+                                <h4>Find us</h4>
+                                <span>1010 Avenue, sw 54321, chandigarh</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-4 mb-30">
+                        <div class="single-cta">
+                            <i class="fas fa-phone"></i>
+                            <div class="cta-text">
+                                <h4>Call us</h4>
+                                <span><a href="">9876543210</a></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-4 mb-30">
+                        <div class="single-cta">
+                            <i class="far fa-envelope-open"></i>
+                            <div class="cta-text">
+                                <h4>Mail us</h4>
+                                <span><a href="">mail@info.com</a></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-content pt-5 pb-5">
+                <div class="row">
+                    <div class="col-md-3 mb-50">
+                        <div class="footer-widget">
+                            <div class="footer-logo">
+                                <a href="index.html"><img
+                                        src="https://www.modernhousemaker.com/newassets/img/whitelogo.png"
+                                        class="img-fluid" alt="logo"></a>
+                            </div>
+                            <div class="footer-text">
+                                <div class="footer-widget-heading mt-4">
+                                    <h3>About Us</h3>
+                                </div>
+                                <p>We have a dynamic and innovative design Experts who strive to provide fast and
+                                    reliable services at unbeatable prices.</p>
+                            </div>
+                            <div class="footer-social-icon">
+                                <span>Follow us</span>
+                                <a href="#"><i class="fab fa-facebook-f facebook-bg"></i></a>
+                                <a href="#"><i class="fab fa-twitter twitter-bg"></i></a>
+                                <a href="#"><i class="fab fa-google-plus-g google-bg"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3  mb-30">
+                        <div class="footer-widget">
+                            <div class="footer-widget-heading">
+                                <h3>Quick Links</h3>
+                            </div>
+                            <ul>
+                                <li>
+                                    <a href="#">Home</a>
+                                </li>
+                                <li>
+                                    <a href="#">About Us</a>
+                                </li>
+                                <li>
+                                    <a href="#">Elevation</a>
+                                </li>
+                                <li>
+                                    <a href="#">Interior</a>
+                                </li>
+                                <li>
+                                    <a href="#">Support</a>
+                                </li>
+                                <li>
+                                    <a href="#">Careers</a>
+                                </li>
+                                <li>
+                                    <a href="#">Terms And Conditions</a>
+                                </li>
+                                <li>
+                                    <a href="#">Contact Us</a>
+                                </li>
+                                <li>
+                                    <a href="#">Privacy Policy</a>
+                                </li>
+                            </ul>
+
+                            <div class="footer-widget-heading">
+                                <h3>Browse House Designs</h3>
+                            </div>
+                            <ul>
+                                <li><a href="">Browse all designs</a></li>
+                                <li><a href="">Browse 3D Elevation</a></li>
+                                <li><a href="">Browse designs by location</a></li>
+                                <li><a href="">Browse designs by dimension</a></li>
+                                <li><a href="">Browse designs by area</a></li>
+                                <li><a href="">Browse designs by category</a></li>
+                                <li><a href="">Browse designs by keywords</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-3  mb-30">
+                        <div class="footer-widget">
+                            <div class="footer-widget-heading">
+                                <h3>Professionals</h3>
+                            </div>
+                            <ul>
+                                <li>
+                                    <a target="_blank" rel="noopener noreferrer" href="#">Register Now</a>
+                                </li>
+                                <li>
+                                    <a target="_blank" rel="noopener noreferrer" href="#">Be Our Associate</a>
+                                </li>
+                                <li>
+                                    <a href="#"> Sell your designs online</a>
+                                </li>
+                                <li>
+                                    <a href="#">Showcase your work</a>
+                                </li>
+                                <li>
+                                    <a href="#">Get leads</a>
+                                </li>
+                                <li>
+                                    <a href="#">Business Alliance</a>
+                                </li>
+                            </ul>
+                            <div class="footer-widget-heading">
+                                <h3>Browse Plans</h3>
+                            </div>
+                            <ul>
+                                <li><a href="">Search</a></li>
+                                <li><a href="">Signature Plans</a></li>
+                                <li><a href="">Exclusive Designers</a></li>
+                                <li><a href="">On Sale</a></li>
+                            </ul>
+                            <div class="footer-widget-heading">
+                                <h3>Get In Touch</h3>
+                            </div>
+                            <ul>
+                                <li><a href="">Publish Houseplans</a></li>
+                                <li><a href="">Advertise With Us</a></li>
+                                <li><a href="">Builder Advantage</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-3  mb-50">
+                        <div class="footer-widget">
+                            <div class="footer-widget-heading">
+                                <h3>Security</h3>
+                            </div>
+                            <div class="footer-text mb-25">
+                                <p>Don’t miss to subscribe to our new feeds, kindly fill the form below.</p>
+                            </div>
+                            <div class="subscribe-form">
+                                <form action="#">
+                                    <input type="text" placeholder="Email Address">
+                                    <button><i class="fab fa-telegram-plane"></i></button>
+                                </form>
+                            </div>
+                            <div class="footer-widget-heading mt-2">
+                                <h3>We Accept Payment</h3>
+                            </div>
+                            <div class="payment-div row">
+                                <div class="col-4">
+                                    <div class="image-div">
+                                        <img src="data:image/png;base64,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" alt="" class="img-fluid bg-white">
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="image-div">
+                                        <img src="data:image/png;base64,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" alt="" class="img-fluid bg-white">
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="image-div">
+                                        <img src="data:image/png;base64,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" alt="" class="img-fluid bg-white">
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="image-div">
+                                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARAAAAC5CAMAAADXsJC1AAABFFBMVEX///+uJ1+sKF+vJV77+vvTucKtJ1uxJF+iHFWmKF2zHlqqK2CwJWC0Il+tIl2tJl2yk5+jQGaoKVqwJVrHmqvr6Or27PH07/GcG1LZyM6tE1TSuMO/k6Pu7O2lSGu1K2HKq7b05eupMV+cGlKbKlmlNF6dZXvp4OS5HFjQvcWjLF+lH1Tm2d6hUG/CH1/cwMubMlyxXXyyiJePE0mlCUvVsb6rZYGvdYqWL1ileIm5NWmnPWaoEFOtb4aFFknCpbGwUHGOMFeRPl+9e5WwYX60WHq3R26uAEzAgpiTAESQU2rEsLfBLma+GFevjJmeVXG1aYV4ADaOR2HAVX3JmKrFcI/CY4KdY3mifYvJQHWFO1jSpLWPXWf6AAAUT0lEQVR4nO1dDXfaONaOZUdYMkaNRIJwaUyMmDgWUBrThABJSqezgSkzdLvdze7b//8/XpnwYcC02XNmQ1P8nNM0AX9cPb736l7pSt7bS5EiRYoUKVKkSJEiRYoUKVKkSJEiRYoUKVKkSLFzMLYtwA+Gwu22JfjBcHlztm0RfigUA35R2LYQPxKubddMjWaBfdN22G+H2xbjh4HxDus2NkvbluOHQbk1ytqQhqfbFuQHwSsBbVuj1LxOg5EIxlVF2jZAFPbSrjfCmXSpZlsC+v67VEWUgtQdF7m25cGG3ytvW5ofALcSMwsQajHsw2ba9Z42IdMQBZBlMgTwy23Ls3WcI0lBYCn9UH5VWKC4bYG2jDOku4BSShjLEC/gueaO+9X6yGeUQqhpQNN0Pas5+W2LtFV8rIywIoTpio4HsOYux6unfcpcSOGCkKxElztsNJfIbUWE4MyMEN2S1u761X0PspFUFqN6mJnJIOp0d1VFjDpmmEEI1c85IdTd3Xj1FjzQobBwqsDF+P1uxqunwoWRQ420hMz40FxpSXSxbdm2ghL2VUSm7AVDOlcQjWmBkHwX/WqRY0whICpGJWBBCHbbbdd/s3t+1XiD5YQGEGND/dXAzT5rtHZvqOgjhwzmtFUAOyuaxG/vXLhaGEfudI0PTcvoyq+gF9uW78lxToXHMFgnhKh+mL7ftnhPjlOTedxNIoRSl4nytuV7ahi/tjBCzE4wGdqR+u5NR5yFSjtogn5oOpVuWNu2fE+NQh1KyACyEhiBUF5tW74nR5m6lNqZIFjucaMxM0263s4pyGFTSgBsOxaRAaDbmSygFnJ759uW78lxmSNA07O2bS8RYmsIecg53rnCmZpQCYymKUIyi6RfUxoCLAQ0uXt1M2ONAznRkIWCZDIZHVACSGb3YrKyhBbRIhXJ6gtCbH2S5OXQziX+xrET0UGiWZiFhti2blkAdsxPOxeTlWw80YWlqAxEHtUiHdTcuS63diDt9QhVmQxAQDeDP7ct35PjmmtE11dHhpRTtZDGQH/nutyXSAXsmYn3APGhMj1nWTl790pVCx9abhDoKx5EgXgicFsfdk5Bbk3fRoG2DhIElOV2biD18D1iuoX0dUJcU8ds92ZjzhGiQCPrfGiI+L7YuS63aLpIID1pnAyRRmPnKrsLHzCmIshkEggJqO8dbVvAp0ZZ+hgqQhICMw0F/O225XtqGH3oY+ChbJKGAO9g55KYF2Y0zU/RehCiwMyP25bvqVGjUR0IhMtTuQ8gucZvBcMw1L/Cq1evDh/waobo159Of4xrHRK4QoQOEVUupWk1zLO9l+/e1cdv6scKBxMczzE+/lv9Z+uTX/MEz6GTwLJHpBs2rlWnzBpUgFwSgkzjrr7tFvy1KPRpAiEERoPLjFiTmOxKgiAACSDAom7v50r88lwm9S2QEajjEZ/MPJy2MRFJhABsicDp/kwVEsqjrvqPCSHAZipob0xnHm7vcKBlEyzL5VXq+z/TQomLnp1UCxIR4snR3cvpYV2fupmETllZDbSZ/HnGn4shxm4iITqjHRnMjnvbk+66JulaoNm2JZ0PP0vfW+gDxhJyfk3ZB4Q0Vj51bUuY0VeRtXRsK79a+Vn8akkSCRIJ0S0Izdhk/2GF0/XIPpvVCSTUE+9/Dr962sU6okmjIERDlKF4ljsQnp15QDajdCUz+WEr4mwo+uGvW2vEX4m6jOqVE8qndNT0RvBl/NjD97yjInxCqWYvdCo7SX8AgL2fwa+emYoQinGCwSBPspUst8wlHDFoUWDr6xTmLp6/X31VVz0HpUklmMCVndXyKeNaQnUCiAhJsDH+Mvkuzwil0I0WkUGWMF+HG+baVF0x9CIGIcgkEeK9f+4zFad9D2McrXpYadqEED9cb9+VoJNhgqRuCVL53Ede65PlDkwZzerDhlmCW+X1M47qgkIItSRCCIXD5931FrmUk4GhVUKUhhBdT1z0cCu4pgK5xMCFuuxZpzSFMZQwWjS1riERIWFiL2r83qE6S9QQDUk3fP3UrfgLkVf+0fJoEiGEaM6GesOiIJBpSWPRGvUAFE/bhr8ShaYDqedFLmGZEECUzyTmpmHBC5X0ZRPGATQtCFzWe77j0YPWiGg6IcpbkHhNahYEnv0H2bgGpHCsCEyq/CZZlddA8Vz96qFIXBETpa+B5oy+sYzsNic7KKkUPpPVdfhs99S4tmSSZ9RtYBHbNr+Vl9SZ3KghzOs/zyH4t5x2EgYOQQZbVsbvffMxFxEmSflxNDwCafD7U7XhL0WgMpKEoWXAMLKw/50x42tHbiBEY9K7eY5Zb/4OAytpaFl3KLFb39km5FDApHOjleC6C4PPzy+lOe36KotPJIRBxurfa1E+UUPYw1pwiz+/lGYgGSSJTxkQhoffLSczmgmEQFv1x9BVHlc8t+0BXjrQo2RtNjcC8vzGh+9foSzXQzMSjSQog3Olef2/b8NfCWOMqagqFcmujaHr1PPxI5xi4c1kmbMeJTXTMyNCIFUKxlwZ7P/vW/EX4la0hYrZPc/Ga/B99qhFU7VhR0an63D9GhgPv+uFfiTU2iHqtSLwCl9CpVLh5vhxbTlvC2RyLsT0zKULBc9qE+dCUeH1W4Wz/f2X5Qe83D87K07wyGdr1IpTnD2gGMNZ8blmNClSpEiRIkWKFClSpEiRIkWKFClSpEiRIkWKFDH8iBU6hcTZnNqTrAYo/J5UC2pEa6/XPiwUjIKxOGDlQoeHp6enh9+emFo9aQNuE8uG/rzevKmEEm1+aePoKEkK43Hv+d0Px+vHFc6vLz6NV+oybq8v3ny4mhxsnF9f31/Fdevwdvy+365Wux9efGMrDOPP68vz0iD/tfzy7BvMHfUT9zi7/fv9ppPO7+8vLqaz6mf3x28uysv3vR0MLi+vHlPjafRFJWHzilrYc0BliZHzMGTw78XpWYSKcDHhenjV50S6eORjW6sMTjbdrdA0JZfO3V3LHlYOXm56YoMbnlS2+MLinzdcui8Ic6bLSV5w0pP3S62phybmN7eP0ZC3HNGkufXzngv0SmxK9fXQBSNUfvjDOM5Z1JwXKRTrgjLp9VqmiTwJneqmCohClSJAo2Wo3B21chsm9U8qTa+VYMh5R8sdJ7u8scgBc0aIqdk4Xub3um1aBB88qlbNaEIrSNo4u1BvdZrWYr/TwmePuXJWubJMyMlNExFZOS69/Zof3zTb3XDTCsJCFyEQiGbzRoSW63ifE83r117X6yXs2pR3QMCTyR4LsiCERsuxFt+97beRbo4fN19eGmI3aIuEJ1UzZZfbX2d/RjqA5y9SNuqKxxkhRl00GX4zFbQ29iTtb7DWiBAtjFg4/FqXIyh+SdDiosSIdsR6wxUhiGHz6/ope+NAj2uIlXsz/2rAhSeDR27te3rAsE/biSt1bpHbIa2pze73ZAdW5upq1GMaUusJ0Vhsrnz0e3Ww6WkUuhSR9vT3y55LRULhxwdnBJk7XN8iQpkMtl1ZTZB2LBQhU3kUIQj+NvvmUnDMwseuAj7nlDVw1+omqe74zhbTV3vU2u5IikW9ekQImglQwrT7R6wMbL2/nuOoSwERU60oHMCFES5QHLqQ+SO2Xv2sCLElovLu1zW9ul8mxGJTQgp1KWBDljdKtIzTimjSho8AT9pNvPa3niXxpMb0AtEGix2zRMgAy8B5XOnkURVpYDhrzoUcOcerhxgX3BLAaWC+VnukCOGeJzGTa7vjTwiZmwwBvQeTqR0ozfaqj13NaPzeEX1R7SBCEhcdlIeuBLwW3QJSl8f8e+RUFxrScoPc45YdLxNyyZl/sHZTk3qi/g8HizVfn3esruA20zgar6j0L8uEaA876Z21R9RriY1RwCpeO5TyexVguE7yfuKDXsdiTaM2JCtrTI1ujJDTEKDOMMnVrWGZkE+e/GNVQw4DV8r2Ya2HPfZ+RQ+UU+XiuCQCZNrtZYNaIYQ6kSnmbwgT/OLxBXsfHDhqne29OsY+bicVx552VTRiXjQ9NGot2cQSIXsDqQjzvjzixhEh2pyQd4L+MVg5otwzR9GHnxrE5yseN+9kRuh6bz9wRtJa7oV+ieKQuQ8hgClC8kNAgmDweD7KZgdOmCzZbNRKXLCw38NMxVGU+vWlp2V0MzFCTo97I3/UC0sbQ88ZFCFgTki5xUSw4jlPKkT3q4fRtiwd5hwvX6/kZBpRS2tNNsKYx4tXLyRBlRkhhFD5yTgf6jRolr8jUQyFLuvIamQIxli1uJsYApYc7EpXWsNlOzQO4hqyd3TfwqNMNofal9+uOlSEmFolsn/jpHTT8K1VZz646+gPawXyJmWtZW9YckB28gRPx47jYlRe8DXGMEALQgDl/2i5Lm3/N+WctyaT7oNe7FMJ6eekgwoIwyrXxEo/vkKIetr9EAHhWXplXP6GmpxUEdHkP/Pn5xecsIZTX/Hlp03M3O7Eeg/bEMLll+ApQtCEkL3Da5N3ZG7h+OpMn8ujCMGu1w5cTP6bxfKnB0NIm9PnWbeb8i5xSehXBzerfDVIWiNkz3h5EeayjLk07L/dqCUTQlxTCPM/utf0zH+uqOXvHmOzWO1jD3nOl/i3JUeFx1PTfpENO9K+mpE/xjjXmyapihDfp02kQqfyJkEScIkA8Wee8jVoZxqJu9xc25jKzuo6r3VCotLbQT2QsCMt+mHT8oUTD5nEVa4DN/yO0KDsL2WgrxEli44YBajhxLlVhDTlzNe9tbg7dGcbGV8wpjkLQmzGoKayi/bjVeQUSQDNeWMuAjpKem3lWegq/+Xy8fLHSYTsTTiptDBjclM990mVAmCb7XqzycNKbsRQeBVj5MJVnedcUV8EHDfi4UCkIXge2n40MWvh+gP39yYFvVm3S4jq9Votyr0QPHqZ66VjdyoLF18bdhirr6lITXRUNNlwpbPcPW4gROFoYEHlgzfkUice1Yg5ddCn+QPMCF+8cjc/HPW0RW9XqGddFg8HlQ+JEaI6NzyCXEyk+AV5QcyHuFrz5ORYqs6z+si14UUkbYgWNzP+BjiprLbQGDsYWp5DVDqwZDSbCVFPzmu5uQ3vrlMmo5FwzkDhQOLM/K5Hx1lsx3PZQRYh/O/F31G2GyNkr3Dc6nDYjRTjmi8Rgp3LKF/3nY7zuHc+GWMkXdKhGbPKmwh068dhx+J0dUOL8+HIgWNjMOz4+CD+3bcI2Ttv+Fgkq4gihJDhQhEL722szYaJSpy0skBaIGhy0wRBWwALkdieAfllDVFifGpBYEYvymsiimIm08DR/WvCtLDbf8zA0JnqITtZSzR8EBBsZ3JIEGJZy05974wzB1PF8DGhFMeN5puE1IYjvGH9sSIExDREkafbmeljMEIPZnOakA0cVHXfBpZAUd66yHYiQjJL6bFxziTG4oWKnCGN9TI6mdz/9Nh0Geg+IhhpS2oyiALVWZk5zHIZNuq5kvleXNNV6uzKSkT7mckQ68U8tnGg5F2MmO0v3dIYErbhpbEnHllEqhFKNmUP1zF+HXZozrasHLYpUD9y+qilS4j9+cXzdyyQvyxd0Lg0HT/oX3ClaYsRM4Rynx6a0EdWZ9j9ro6UsNIMenB8XJ9uYnpw3H4Xur6P4pFjXcU+4OGDfOs/shMbATWOM/Pxh89hb3gTJ7JWyUC+iZAodI9lqv+6a0p70pBiZSSRVW03I3S7BwddJV4X4JG8nxGoCKmy+5VLlisu5RzoGTAP3Smy8HTE7FUdiQ5vfqf3PT2gpNMtHh0VIky2uS0cFlSCCYPYfusvQwvy9oMwhXFGAr6QxajrYGYy/a5HYDl2+VsumUgeHzmpKq8aM5nDKm5afNJzjlEHdkpHR4dzKNkOr0eMzq9VcqC3Rsjex7aXHREQBHENkZ9mbRWWCETCeGQcl6ZHrX+vfVxn1FuY6GTDpHm++YpnVFo+V97JANE0uzoPKY7nfoV77ro3yb79SBECYoScY7ctJiPZHxGlpLnW7+/3uMfRzOs6iDprhOwVb/DdCIkFIYQgc66hRYEs6obfWsZYFC61EnZIqjU96sy2UzPqrkquFk623FOpwTxgNQ4W2e5pW4WdaB5fFe6FCl0ukxMaRQjQZrcu1K7CBmuKKFIoHDDYqZTXzzgOqBxNt7f64gQQrxOyV6u7yiHOnfxtjiC5MNkiYi70+t+IR67lyJdJb7u5EtDNTVfZXrnSI7Gu1vig4lU4C1gNYnNrFlPetnwX9sZvIw4Kt+9VA/BwU6TqmSTr/LNU+jIoDd7A4chn4aQ/+GqyRms9MFSGKyRj/MHrfMFepzVeP2av9lnDmJhTBb6VHZD9FLuE8gUUVTf2NeWhB/2DJIlP2q6k4cuHi0iLt+N6f2Ly5ghPwwvDxRYdzki/sqTvkjDs929C08W4Vd0UDEWESOxw3rtzpGT/aeHhecTC4QGlvpNk6Ma9pzT+wZC/tDy64S0bv6jel0w15KNpeTJGyN6+ZNTCBxs8a2EMhWcmb71fCj0RRPvz1doYBStj92XRJ3IaJhlVXXh8kXV0Xe6haKcYqp4n+LTRhanQ3ULAazYp9NptSoL6QyNecOqR5Hd4nYW8yg8mDJekqCYM008wGIKZw9sPLVFZGuP9WvE4ExvWun68CcLE+aGonZ8rohnm1f8Si5vV0b37kHPxfw+qdc1vmrEYslZXPs3OScrN4cHHzQMihS7nPOfInv+HUxn26vuvHj6+CUUYbpjMuQp5EE48x+1QiE1ZkvLtswGi4rAihsvCf7yJZO8netbi11I+v2nAovZ2cH5+axRLg0G+vHqQ8bVU+nPwwEIxny+V4i0onv968e63D5dfvtnBFdRZpdLtbfm2fBY7uzY4L+U3nXj49ksp/yI6+jT/Jb/xsL18OLWJV+r4rytGW1Q3Ps+/eNpdFYxXr7a6Ir34HHdeSZEiRYoUKVKkSJEiRYoUKVKkeDL8P706S4wCkTeAAAAAAElFTkSuQmCC" alt="" class="img-fluid bg-white">
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="image-div">
+                                        <img src="data:image/png;base64,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" alt="" class="img-fluid bg-white">
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="image-div">
+                                        <img src="data:image/png;base64,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" alt="" class="img-fluid bg-white">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-6 col-lg-6 text-center text-lg-left">
+                        <div class="copyright-text">
+                            <p>Copyright &copy; 2018, All Right Reserved <a
+                                    href="https://codepen.io/anupkumar92/">Anup</a></p>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 d-none d-lg-block text-right">
+                        <div class="footer-menu">
+                            <ul>
+                                <li><a href="#">Home</a></li>
+                                <li><a href="#">Terms</a></li>
+                                <li><a href="#">Privacy</a></li>
+                                <li><a href="#">Policy</a></li>
+                                <li><a href="#">Contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="overlay"></div>
+
+
+    <script src="script.js"></script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"
+        integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+    <!-- QUICK CHECKOUT -->
+
+    <script>
+        //================================= NAV ====================================================
+        const overlay = document.querySelector(".overlay");
+        const body = document.querySelector("body");
+        const menuBtn = document.querySelector(".menu-btn");
+        const menuItems = document.querySelector(".menu-items");
+        const expandBtn = document.querySelectorAll(".expand-btn");
+
+        function toggle() {
+            // disable overflow body
+            body.classList.toggle("overflow");
+            // dark background
+            overlay.classList.toggle("overlay--active");
+            // add open class
+            menuBtn.classList.toggle("open");
+            menuItems.classList.toggle("open");
+        }
+
+        menuBtn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            toggle();
+        });
+
+        window.onkeydown = function (event) {
+            const key = event.key; // const {key} = event; in ES6+
+            const active = menuItems.classList.contains("open");
+            if (key === "Escape" && active) {
+                toggle();
+            }
+        };
+
+        document.addEventListener("click", (e) => {
+            let target = e.target,
+                its_menu = target === menuItems || menuItems.contains(target),
+                its_hamburger = target === menuBtn,
+                menu_is_active = menuItems.classList.contains("open");
+            if (!its_menu && !its_hamburger && menu_is_active) {
+                toggle();
+            }
+        });
+
+        // mobile menu expand
+        expandBtn.forEach((btn) => {
+            btn.addEventListener("click", () => {
+                btn.classList.toggle("open");
+            });
+        });
+
+        //================================= NUMBER COUNTER ====================================================
+        (function ($) {
+            $.fn.countTo = function (options) {
+                options = options || {};
+
+                return $(this).each(function () {
+                    // set options for current element
+                    var settings = $.extend({}, $.fn.countTo.defaults, {
+                        from: $(this).data('from'),
+                        to: $(this).data('to'),
+                        speed: $(this).data('speed'),
+                        refreshInterval: $(this).data('refresh-interval'),
+                        decimals: $(this).data('decimals')
+                    }, options);
+
+                    // how many times to update the value, and how much to increment the value on each update
+                    var loops = Math.ceil(settings.speed / settings.refreshInterval),
+                        increment = (settings.to - settings.from) / loops;
+
+                    // references & variables that will change with each update
+                    var self = this,
+                        $self = $(this),
+                        loopCount = 0,
+                        value = settings.from,
+                        data = $self.data('countTo') || {};
+
+                    $self.data('countTo', data);
+
+                    // if an existing interval can be found, clear it first
+                    if (data.interval) {
+                        clearInterval(data.interval);
+                    }
+                    data.interval = setInterval(updateTimer, settings.refreshInterval);
+
+                    // initialize the element with the starting value
+                    render(value);
+
+                    function updateTimer() {
+                        value += increment;
+                        loopCount++;
+
+                        render(value);
+
+                        if (typeof (settings.onUpdate) == 'function') {
+                            settings.onUpdate.call(self, value);
+                        }
+
+                        if (loopCount >= loops) {
+                            // remove the interval
+                            $self.removeData('countTo');
+                            clearInterval(data.interval);
+                            value = settings.to;
+
+                            if (typeof (settings.onComplete) == 'function') {
+                                settings.onComplete.call(self, value);
+                            }
+                        }
+                    }
+
+                    function render(value) {
+                        var formattedValue = settings.formatter.call(self, value, settings);
+                        $self.html(formattedValue);
+                    }
+                });
+            };
+
+            $.fn.countTo.defaults = {
+                from: 0,               // the number the element should start at
+                to: 0,                 // the number the element should end at
+                speed: 1000,           // how long it should take to count between the target numbers
+                refreshInterval: 100,  // how often the element should be updated
+                decimals: 0,           // the number of decimal places to show
+                formatter: formatter,  // handler for formatting the value before rendering
+                onUpdate: null,        // callback method for every time the element is updated
+                onComplete: null       // callback method for when the element finishes updating
+            };
+
+            function formatter(value, settings) {
+                return value.toFixed(settings.decimals);
+            }
+        }(jQuery));
+
+        jQuery(function ($) {
+            // custom formatting example
+            $('.count-number').data('countToOptions', {
+                formatter: function (value, options) {
+                    return value.toFixed(options.decimals).replace(/\B(?=(?:\d{3})+(?!\d))/g, ',');
+                }
+            });
+
+            // start all the timers
+            $('.timer').each(count);
+
+            function count(options) {
+                var $this = $(this);
+                options = $.extend({}, options || {}, $this.data('countToOptions') || {});
+                $this.countTo(options);
+            }
+        });
+
+        //================================= TESTIMONIAL SLIDER ====================================================
+        $(".testimonial-content").owlCarousel({
+            loop: true,
+            items: 2,
+            margin: 50,
+            dots: true,
+            nav: false,
+            mouseDrag: true,
+            autoplay: false,
+            autoplayTimeout: 4000,
+            smartSpeed: 800
+        });
+
+        // our-partners-div 
+
+    </script>
+</body>
+
+</html>

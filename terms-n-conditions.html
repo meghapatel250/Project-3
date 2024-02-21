@@ -1,0 +1,604 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Terms & Conditions</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <style>
+    #t-n-c-div {
+      padding: 20px 35px;
+    }
+
+    #t-n-c-div .title {
+      position: absolute;
+      z-index: -3;
+      top: -30px;
+      font-size: 70px;
+      text-shadow: 0 1px;
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      color: rgb(226, 223, 228);
+    }
+
+    @media (max-width:677px) and (min-width:500px){
+      #t-n-c-div .title {
+      top: -20px;
+      font-size: 50px;
+    }
+    }
+
+    #t-n-c-div .heading {
+      font-size: 25px;
+      text-shadow: 2px 2px 4px rgb(151, 192, 74);
+      font-weight: 700;
+    }
+
+    #t-n-c-div .text .ordered-list {
+      padding: 0 0 0 15px;
+      margin: 0;
+      color: black;
+      font-weight: 600;
+    }
+
+    /* ACCORDION */
+    .accordion dl,
+    .accordion-list {
+      border: 1px solid transparent;
+    }
+
+    .accordion dd,
+    .accordion__panel {
+      background-color: #fff;
+      font-size: 1em;
+      line-height: 1.5em;
+    }
+
+    .accordion p {
+      padding: 1em 2em 1em 2em;
+    }
+
+    .accordion {
+      position: relative;
+      background-color: transparent;
+    }
+
+    #accordion-div .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 2em 0 2em 0;
+    }
+
+    .accordionTitle,
+    .accordion__Heading {
+      background-color: #9aceae;
+      border-radius: 5px;
+      text-align: center;
+      font-weight: 700;
+      padding: 0.9em 1em;
+      display: block;
+      text-decoration: none;
+      color: #fff;
+      transition: background-color 0.5s ease-in-out;
+      border-bottom: 1px solid #30bb64;
+    }
+
+    .accordionTitle:before,
+    .accordion__Heading:before {
+      content: "+";
+      font-size: 1.5em;
+      line-height: 0.5em;
+      float: left;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .accordionTitle:hover,
+    .accordion__Heading:hover {
+      text-decoration: none;
+      color: rgb(235, 227, 227);
+      background-color: #7db391;
+
+    }
+
+    .accordionTitleActive,
+    .accordionTitle.is-expanded {
+      background-color: #7db391;
+    }
+
+    .accordionTitleActive:before,
+    .accordionTitle.is-expanded:before {
+      transform: rotate(-225deg);
+    }
+
+    .accordionItem {
+      height: auto;
+      overflow: hidden;
+      max-height: 50em;
+      transition: max-height 1s;
+    }
+
+    @media screen and (min-width: 48em) {
+      .accordionItem {
+        max-height: 15em;
+        transition: max-height 0.5s;
+      }
+    }
+
+    .accordionItem.is-collapsed {
+      max-height: 0;
+    }
+
+    .no-js .accordionItem.is-collapsed {
+      max-height: auto;
+    }
+
+    .animateIn {
+      -webkit-animation: accordionIn 0.45s normal ease-in-out both 1;
+      animation: accordionIn 0.45s normal ease-in-out both 1;
+    }
+
+    .animateOut {
+      -webkit-animation: accordionOut 0.45s alternate ease-in-out both 1;
+      animation: accordionOut 0.45s alternate ease-in-out both 1;
+    }
+
+    @-webkit-keyframes accordionIn {
+      0% {
+        opacity: 0;
+        transform: scale(0.9) rotateX(-60deg);
+        transform-origin: 50% 0;
+      }
+
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes accordionIn {
+      0% {
+        opacity: 0;
+        transform: scale(0.9) rotateX(-60deg);
+        transform-origin: 50% 0;
+      }
+
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @-webkit-keyframes accordionOut {
+      0% {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      100% {
+        opacity: 0;
+        transform: scale(0.9) rotateX(-60deg);
+      }
+    }
+
+    @keyframes accordionOut {
+      0% {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      100% {
+        opacity: 0;
+        transform: scale(0.9) rotateX(-60deg);
+      }
+    }
+
+    /* FORM */
+
+    .form-div {
+      margin-top: 3.5em;
+      background: #9aceae;
+      -webkit-font-smoothing: antialiased;
+      border: 1px solid #30bb64;
+    }
+
+    .form-div hgroup {
+      text-align: center;
+    }
+
+    .form-div span {
+      font-size: 0.95em;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      line-height: 24px;
+      text-transform: uppercase;
+    }
+
+    /*------------------------------------------------------------------
+[ Login Form ]*/
+
+    .form-div .log-form {
+      width: 500px;
+      margin: 1em auto;
+      padding: 2em 2em 2em 2em;
+      background: white;
+      border: 1px solid #ebebeb;
+      box-shadow: rgba(0, 0, 0, 0.14902) 0px 1px 1px 0px, rgba(0, 0, 0, 0.09804) 0px 1px 2px 0px;
+    }
+
+    .form-div .group {
+      position: relative;
+      margin-bottom: 10px;
+    }
+
+    .form-div .log-input {
+      font-size: 18px;
+      padding: 2px 10px 2px 5px;
+      -webkit-appearance: none;
+      display: block;
+      background: #fafafa;
+      color: #636363;
+      width: 100%;
+      border: none;
+      border-radius: 0;
+      border-bottom: 1px solid #757575;
+    }
+
+    .form-div .log-input:focus {
+      outline: none;
+    }
+
+    .form-div .log-form a {
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      line-height: 24px;
+      text-transform: uppercase;
+      color: #aaaaaa;
+    }
+
+    .form-div .form-div .left-align {
+      float: left;
+      text-align: left;
+    }
+
+    .form-div .right-align {
+      float: right;
+      text-align: right;
+    }
+
+    .form-div .log-form .form-btn-div .btn{
+      border: 1px solid #30bb64;
+      background-color: #9aceae;
+      width: 150px;
+      color: white;
+      font-weight: 600;
+    }
+    .form-div .log-form .form-btn-div .btn:hover{
+      background-color: #7db391;
+    }
+
+
+    /*------------------------------------------------------------------
+[ Button same code as contact form ]*/
+
+    .form-div input[type="text"],
+    .form-div input[type="email"],
+    .form-div input[type="number"],
+    .form-div textarea,
+    select {
+      background: transparent;
+      border: none;
+      /* font-family: "Montserrat"; */
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      line-height: 24px;
+      height: 42px;
+      padding-left: 20px;
+      padding-right: 20px;
+      text-transform: none;
+      width: 100%;
+    }
+
+    .form-div input[type="checkbox"]:not(:checked)+label,
+    .form-div input[type="checkbox"]:checked+label {
+      color: #252222;
+      cursor: pointer;
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      padding-left: 10px;
+      padding-top: 6px;
+      position: relative;
+      text-transform: uppercase;
+    }
+
+    @media (min-width:1335px) {
+      .form-div .log-form {
+        width: 500px;
+      }
+    }
+
+    @media (max-width:1334px) and (min-width:1000px) {
+      .form-div .log-form {
+        width: 400px;
+      }
+    }
+
+    @media (max-width:587px) and (min-width:549px) {
+      .form-div .log-form {
+        width: 440px;
+      }
+    }
+
+    @media (max-width:548px) and (min-width:438px) {
+      .form-div .log-form {
+        width: 340px;
+      }
+    }
+
+    @media (max-width:437px) and (min-width:366px) {
+      .form-div .log-form {
+        width: 280px;
+      }
+    }
+
+    @media (max-width:365px) {
+      .form-div .log-form {
+        width: 250px;
+      }
+    }
+
+    /* --------------------------------------- googlemap ----------------------------------------------------*/
+    #google-map-div .container {
+      width: 100%;
+    }
+
+    /* Then style the iframe to fit in the container div with full height and width */
+    #google-map-div .responsive-iframe {
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="t-n-c-div">
+    <div class="row">
+      <div class="col-md-7">
+        <div class="title">
+          Terms & Conditions
+        </div>
+        <div class="subtitle">
+        </div>
+        <div class="heading">
+          Terms & Conditions
+        </div>
+        <div id="acordion-div">
+          <div class="container mt-4">
+            <div class="accordion">
+              <dl>
+                <dt>
+                  <a href="#accordion1" aria-expanded="false" aria-controls="accordion1"
+                    class="accordion-title accordionTitle js-accordionTrigger">First Accordion heading</a>
+                </dt>
+                <dd class="accordion-content accordionItem is-collapsed" id="accordion1" aria-hidden="true">
+                  <p>Lorem ipsum dolor sit amet, consectetur <a href="https://www.google.com">Test</a>adipiscing elit.
+                    Morbi eu interdum diam. Donec interdum porttitor risus non bibendum. Maecenas sollicitudin eros in
+                    quam imperdiet placerat. Cras justo purus, rhoncus nec lobortis ut, iaculis vel ipsum. Donec
+                    dignissim arcu nec elit faucibus condimentum. Donec facilisis consectetur enim sit amet varius.
+                    Pellentesque justo dui, sodales quis luctus a, iaculis eget mauris. </p>
+                  <p>Aliquam dapibus, ante quis fringilla feugiat, mauris risus condimentum massa, at elementum libero
+                    quam ac ligula. Pellentesque at rhoncus dolor. Duis porttitor nibh ut lobortis aliquam. Nullam eu
+                    dolor venenatis mauris placerat tristique eget id dolor. Quisque blandit adipiscing erat vitae
+                    dapibus. Nulla aliquam magna nec elementum tincidunt.</p>
+                </dd>
+                <dt>
+                  <a href="#accordion2" aria-expanded="false" aria-controls="accordion2"
+                    class="accordion-title accordionTitle js-accordionTrigger">
+                    Second Accordion heading</a>
+                </dt>
+                <dd class="accordion-content accordionItem is-collapsed" id="accordion2" aria-hidden="true">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eu interdum diam. Donec interdum
+                    porttitor risus non bibendum. Maecenas sollicitudin eros in quam imperdiet placerat. Cras justo
+                    purus, rhoncus nec lobortis ut, iaculis vel ipsum. Donec dignissim arcu nec elit faucibus
+                    condimentum. Donec facilisis consectetur enim sit amet varius. Pellentesque justo dui, sodales quis
+                    luctus a, iaculis eget mauris. </p>
+                  <p>Aliquam dapibus, ante quis fringilla feugiat, mauris risus condimentum massa, at elementum libero
+                    quam ac ligula. Pellentesque at rhoncus dolor. Duis porttitor nibh ut lobortis aliquam. Nullam eu
+                    dolor venenatis mauris placerat tristique eget id dolor. Quisque blandit adipiscing erat vitae
+                    dapibus. Nulla aliquam magna nec elementum tincidunt.</p>
+                </dd>
+                <dt>
+                  <a href="#accordion3" aria-expanded="false" aria-controls="accordion3"
+                    class="accordion-title accordionTitle js-accordionTrigger">
+                    Third Accordion heading
+                  </a>
+                </dt>
+                <dd class="accordion-content accordionItem is-collapsed" id="accordion3" aria-hidden="true">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eu interdum diam. Donec interdum
+                    porttitor risus non bibendum. Maecenas sollicitudin eros in quam imperdiet placerat. Cras justo
+                    purus, rhoncus nec lobortis ut, iaculis vel ipsum. Donec dignissim arcu nec elit faucibus
+                    condimentum. Donec facilisis consectetur enim sit amet varius. Pellentesque justo dui, sodales quis
+                    luctus a, iaculis eget mauris. </p>
+                  <p>Aliquam dapibus, ante quis fringilla feugiat, mauris risus condimentum massa, at elementum libero
+                    quam ac ligula. Pellentesque at rhoncus dolor. Duis porttitor nibh ut lobortis aliquam. Nullam eu
+                    dolor venenatis mauris placerat tristique eget id dolor. Quisque blandit adipiscing erat vitae
+                    dapibus. Nulla aliquam magna nec elementum tincidunt.</p>
+                </dd>
+                <dt>
+                  <a href="#accordion4" aria-expanded="false" aria-controls="accordion4"
+                    class="accordion-title accordionTitle js-accordionTrigger">First Accordion heading</a>
+                </dt>
+                <dd class="accordion-content accordionItem is-collapsed" id="accordion4" aria-hidden="true">
+                  <p><a href="https://www.google.com">Test</a>adipiscing elit. Morbi eu interdum diam. Donec interdum
+                    porttitor risus non bibendum. Maecenas sollicitudin eros in quam imperdiet placerat. Cras justo
+                    purus, rhoncus nec lobortis ut, iaculis vel ipsum. Donec dignissim arcu nec elit faucibus
+                    condimentum. Donec facilisis consectetur enim sit amet varius. Pellentesque justo dui, sodales quis
+                    luctus a, iaculis eget mauris. </p>
+                  <p>Aliquam dapibus, ante quis fringilla feugiat, mauris risus condimentum massa, at elementum libero
+                    quam ac ligula. Pellentesque at rhoncus dolor. Duis porttitor nibh ut lobortis aliquam. Nullam eu
+                    dolor venenatis mauris placerat tristique eget id dolor. Quisque blandit adipiscing erat vitae
+                    dapibus. Nulla aliquam magna nec elementum tincidunt.</p>
+                </dd>
+                <dt>
+                  <a href="#accordion5" aria-expanded="false" aria-controls="accordion5"
+                    class="accordion-title accordionTitle js-accordionTrigger">First Accordion heading</a>
+                </dt>
+                <dd class="accordion-content accordionItem is-collapsed" id="accordion5" aria-hidden="true">
+                  <p>Lorem ipsum dolor sit amet, consectetur <a href="https://www.google.com">Test</a>adipiscing elit.
+                    Morbi eu interdum diam. Donec interdum porttitor risus non bibendum. Maecenas sollicitudin eros in
+                    quam imperdiet placerat. Cras justo purus, rhoncus nec lobortis ut, iaculis vel ipsum. Donec
+                    dignissim arcu nec elit faucibus condimentum. Donec facilisis consectetur enim sit amet varius.
+                    Pellentesque justo dui, sodales quis luctus a, iaculis eget mauris. </p>
+                  <p>Aliquam dapibus, ante quis fringilla feugiat, mauris risus condimentum massa, at elementum libero
+                    quam ac ligula. Pellentesque at rhoncus dolor. Duis porttitor nibh ut lobortis aliquam. Nullam eu
+                    dolor venenatis mauris placerat tristique eget id dolor. Quisque blandit adipiscing erat vitae
+                    dapibus. Nulla aliquam magna nec elementum tincidunt.</p>
+                </dd>
+                <dt>
+                  <a href="#accordion6" aria-expanded="false" aria-controls="accordion6"
+                    class="accordion-title accordionTitle js-accordionTrigger">First Accordion heading</a>
+                </dt>
+                <dd class="accordion-content accordionItem is-collapsed" id="accordion6" aria-hidden="true">
+                  <p>Lorem ipsum dolor sit amet, consectetur <a href="https://www.google.com">Test</a>adipiscing elit.
+                    Morbi eu interdum diam. Donec interdum porttitor risus non bibendum. Maecenas sollicitudin eros in
+                    quam imperdiet placerat. Cras justo purus, rhoncus nec lobortis ut, iaculis vel ipsum. Donec
+                    dignissim arcu nec elit faucibus condimentum. Donec facilisis consectetur enim sit amet varius.
+                    Pellentesque justo dui, sodales quis luctus a, iaculis eget mauris. </p>
+                  <p>Aliquam dapibus, ante quis fringilla feugiat, mauris risus condimentum massa, at elementum libero
+                    quam ac ligula. Pellentesque at rhoncus dolor. Duis porttitor nibh ut lobortis aliquam. Nullam eu
+                    dolor venenatis mauris placerat tristique eget id dolor. Quisque blandit adipiscing erat vitae
+                    dapibus. Nulla aliquam magna nec elementum tincidunt.</p>
+                </dd>
+              </dl>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-5 mt-sm-0 mt-4">
+        <div class="form-div">
+          <section>
+
+            <hgroup>
+              <h5>Free Consultation</h5>
+            </hgroup>
+            <form method="post" class="log-form">
+              <div class="group log-input">
+                <input type="text" id="username" name="username" placeholder="First Name" required>
+              </div>
+              <div class="group log-input">
+                <input type="email" id="username" name="email" placeholder="Email">
+              </div>
+              <div class="group log-input">
+                <input type="number" id="username" name="phone" placeholder="Phone">
+              </div>
+              <div class="group log-input">
+                <input type="text" id="username" name="state" placeholder="State">
+              </div>
+              <div class="group log-input">
+                <input type="text" id="username" name="username" placeholder="City">
+              </div>
+              <div class="form-btn-div text-center">
+                <button class="btn">Submit</button>
+              </div>
+            </form>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--  -->
+  <div id="google-map-div">
+    <div class="row">
+      <div class="col-12">
+        <iframe class="responsive-iframe"
+          src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14721.047787136391!2d75.886509!3d22.7185032!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3962fd4ed470cfd1%3A0xa7d029a868755b6f!2sFreelancer%20IT%20Services%20l%20Website%20Deisgner%20in%20Indore!5e0!3m2!1sen!2sin!4v1685620019274!5m2!1sen!2sin"
+          width="1400" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <script>
+    //    ACCORDION
+    //uses classList, setAttribute, and querySelectorAll
+    //if you want this to work in IE8/9 youll need to polyfill these
+    (function () {
+      var d = document,
+        accordionToggles = d.querySelectorAll('.js-accordionTrigger'),
+        setAria,
+        setAccordionAria,
+        switchAccordion,
+        touchSupported = ('ontouchstart' in window),
+        pointerSupported = ('pointerdown' in window);
+
+      skipClickDelay = function (e) {
+        e.preventDefault();
+        e.target.click();
+      }
+
+      setAriaAttr = function (el, ariaType, newProperty) {
+        el.setAttribute(ariaType, newProperty);
+      };
+      setAccordionAria = function (el1, el2, expanded) {
+        switch (expanded) {
+          case "true":
+            setAriaAttr(el1, 'aria-expanded', 'true');
+            setAriaAttr(el2, 'aria-hidden', 'false');
+            break;
+          case "false":
+            setAriaAttr(el1, 'aria-expanded', 'false');
+            setAriaAttr(el2, 'aria-hidden', 'true');
+            break;
+          default:
+            break;
+        }
+      };
+      //function
+      switchAccordion = function (e) {
+        console.log("triggered");
+        e.preventDefault();
+        var thisAnswer = e.target.parentNode.nextElementSibling;
+        var thisQuestion = e.target;
+        if (thisAnswer.classList.contains('is-collapsed')) {
+          setAccordionAria(thisQuestion, thisAnswer, 'true');
+        } else {
+          setAccordionAria(thisQuestion, thisAnswer, 'false');
+        }
+        thisQuestion.classList.toggle('is-collapsed');
+        thisQuestion.classList.toggle('is-expanded');
+        thisAnswer.classList.toggle('is-collapsed');
+        thisAnswer.classList.toggle('is-expanded');
+
+        thisAnswer.classList.toggle('animateIn');
+      };
+      for (var i = 0, len = accordionToggles.length; i < len; i++) {
+        if (touchSupported) {
+          accordionToggles[i].addEventListener('touchstart', skipClickDelay, false);
+        }
+        if (pointerSupported) {
+          accordionToggles[i].addEventListener('pointerdown', skipClickDelay, false);
+        }
+        accordionToggles[i].addEventListener('click', switchAccordion, false);
+      }
+    })();
+  </script>
+</body>
+
+</html>
